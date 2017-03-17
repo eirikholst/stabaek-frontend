@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-4">
+    <ul class="list-group">
+      <li class="list-group-item"
+      *ngFor="let fixture of fixtures">
+        <!--<div class="container">-->
+          <div class="list-group">
+            <a href="#" class="list-group-item justify-content-between">
+              {{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}
+              <span class="float-right">
+                <P>{{fixture.readableDate}}</P>
+              </span>
+            </a>
+          </div>
+        <!--</div>-->
+      </li>
+    </ul>
+  </div>
+</div>

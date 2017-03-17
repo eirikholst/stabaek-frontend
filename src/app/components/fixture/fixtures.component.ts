@@ -4,9 +4,9 @@ import {Fixture} from '../../domain/fixture';
 
 @Component({
   selector: 'all-fixtures',
-  templateUrl: 'app.component.fixtures.html',
+  templateUrl: 'fixtures.component.html',
   styleUrls: [
-    'app.component.css',
+    '../styles/app.component.css',
   ],
   providers: [AppRestService]
 })

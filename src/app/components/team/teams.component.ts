@@ -4,7 +4,7 @@ import {Team} from '../../domain/team';
 
 @Component({
   selector: 'all-teams',
-  templateUrl: 'app.component.teams.html',
+  templateUrl: 'teams.component.html',
   providers: [AppRestService]
 })
 

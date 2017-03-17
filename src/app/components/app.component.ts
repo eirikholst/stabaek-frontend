@@ -5,7 +5,7 @@ import {AppRestService} from '../service/app.rest.service';
     selector: 'app-root',
     encapsulation: ViewEncapsulation.None,
     templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css'],
+    styleUrls: ['./styles/app.component.css'],
     providers: [AppRestService],
 })
 export class AppComponent {

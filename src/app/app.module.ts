@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './components/app.component';
-import { AllFixturesComponent } from './components/fixture/app.component.fixtures';
-import { AllTeamsComponent } from './components/team/app.component.teams';
+import { AllFixturesComponent } from './components/fixture/fixtures.component';
+import { AllTeamsComponent } from './components/team/teams.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
 
 @NgModule({

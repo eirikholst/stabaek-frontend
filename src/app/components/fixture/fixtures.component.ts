@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppRestService} from '../../service/app.rest.service';
 import {Fixture} from '../../domain/fixture';
 import {ActivatedRoute} from "@angular/router";
+import {OrderByDate} from "../pipes/orderByDate";
 
 @Component({
   selector: 'fixtures',

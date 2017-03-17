@@ -12,6 +12,7 @@ import { AllFixturesComponent } from './components/fixture/fixtures.component';
 import { StabaekFixturesComponent } from './components/fixture/stabaek-fixtures.component';
 import { AllTeamsComponent } from './components/team/teams.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
+import {OrderByDate} from "./components/pipes/orderByDate";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavbarComponent } from './components/navbar/nav.navbar';
     NavbarComponent,
     AllFixturesComponent,
     AllTeamsComponent,
-    StabaekFixturesComponent
+    StabaekFixturesComponent,
+    OrderByDate
   ],
   imports: [
     BrowserModule,

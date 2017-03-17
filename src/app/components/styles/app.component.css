@@ -1,20 +1,35 @@
 html, body, .container {
-  height: 100%;
   background: rgb(0,0,112);
 }
-.container {
+
+.container-centered {
   display: flex;
   justify-content: center;
 }
 
-li {
-  width: 500px;
+.list-item-transparent {
+  min-width: 300px;
   border: none;
   background: transparent;
 }
 
-ul {
-  width: 500px;
-  border: none;
-  background: transparent;
+/*.list-group-transparent {*/
+/*width: 500px;*/
+/*border: none;*/
+/*background: transparent;*/
+/*justify-content: center;*/
+/*}*/
+
+.top-padding{
+  padding-top: 5rem;
+  justify-content: center;
 }
+
+
+/*li {*/
+  /*width: 500px;*/
+  /*border: none;*/
+  /*background: transparent;*/
+  /*justify-content: center;*/
+/*}*/
+

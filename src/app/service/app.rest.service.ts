@@ -29,6 +29,12 @@ export class AppRestService {
         .catch(this.handleError);
     }
 
+    getAllStabaekFixtures(): Observable<Fixture[]> {
+      return this.http.get(this.restUrl + 'fixtures/findByTeam=Stabæk')
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

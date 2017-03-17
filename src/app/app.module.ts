@@ -4,23 +4,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './components/app.component';
+import { ROUTES } from "./app.routes";
 import { AllFixturesComponent } from './components/fixture/fixtures.component';
+import { StabaekFixturesComponent } from './components/fixture/stabaek-fixtures.component';
 import { AllTeamsComponent } from './components/team/teams.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     AllFixturesComponent,
     AllTeamsComponent,
-    NavbarComponent
+    StabaekFixturesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

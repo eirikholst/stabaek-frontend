@@ -1,20 +1,23 @@
+/**
+ * Created by eirik.holst on 17.03.2017.
+ */
 import {Component, OnInit} from '@angular/core';
 import {AppRestService} from '../../service/app.rest.service';
-import {Team} from '../../domain/team';
+import {Fixture} from '../../domain/fixture';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'all-teams',
-  templateUrl: 'teams.component.html',
+  selector: 'fixtures',
+  templateUrl: 'fixtures.component.html',
   styleUrls: [
-    '../styles/app.component.css',
+    '../styles/app.component.css'
   ],
   providers: [AppRestService]
 })
 
-export class AllTeamsComponent implements OnInit {
+export class StabaekFixturesComponent implements OnInit {
 
-  private teams: Team[];
+  private fixtures: Fixture[];
   private errorMessage: any;
 
   constructor(
@@ -24,9 +27,9 @@ export class AllTeamsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appRestService.getAllTeams()
+    this.appRestService.getAllStabaekFixtures()
       .subscribe(
-        team => this.teams = team,
+        fixture => this.fixtures = fixture,
         error => this.errorMessage = <any>error);
   }
 }

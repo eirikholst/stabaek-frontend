@@ -1,18 +1,14 @@
-<div class="row">
+<div class="row top-padding">
   <div class="col-sm-4">
-    <ul class="list-group">
-      <li class="list-group-item"
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent"
       *ngFor="let fixture of fixtures">
-        <!--<div class="container">-->
           <div class="list-group">
-            <a href="#" class="list-group-item justify-content-between">
-              {{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}
-              <span class="float-right">
-                <P>{{fixture.readableDate}}</P>
-              </span>
-            </a>
+            <div class="row list-group-item">
+              <div class="col-12 col-md-8 col-lg-8">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</div>
+              <div class="col-md-3">{{fixture.readableDate}}</div>
+            </div>
           </div>
-        <!--</div>-->
       </li>
     </ul>
   </div>

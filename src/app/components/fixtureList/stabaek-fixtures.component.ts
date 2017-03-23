@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'fixtures',
-  templateUrl: 'fixtures.component.html',
+  templateUrl: 'fixtureList.component.html',
   styleUrls: [
     '../styles/app.component.css'
   ],

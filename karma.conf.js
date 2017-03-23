@@ -12,10 +12,10 @@ module.exports = function (config) {
       require('angular-cli/plugins/karma')
     ],
     files: [
-      { pattern: './src/test.ts', watched: false }
+      { pattern: './src/app/components/pipes/addRotationToFixture.spec.ts', watched: false }
     ],
     preprocessors: {
-      './src/test.ts': ['angular-cli']
+      './src/test.ts': ['angular-cli'],
     },
     remapIstanbulReporter: {
       reports: {
@@ -27,6 +27,7 @@ module.exports = function (config) {
       config: './angular-cli.json',
       environment: 'dev'
     },
+    mime: { 'text/x-typescript': ['ts','tsx'] },
     reporters: ['progress', 'karma-remap-istanbul'],
     port: 9876,
     colors: true,

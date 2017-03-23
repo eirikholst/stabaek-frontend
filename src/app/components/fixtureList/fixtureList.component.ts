@@ -2,11 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AppRestService} from '../../service/app.rest.service';
 import {Fixture} from '../../domain/fixture';
 import {ActivatedRoute} from "@angular/router";
-import {OrderByDate} from "../pipes/orderByDate";
 
 @Component({
   selector: 'fixtures',
-  templateUrl: 'fixtures.component.html',
+  templateUrl: 'fixtureList.component.html',
   styleUrls: [
     '../styles/app.component.css'
   ],
@@ -20,14 +19,13 @@ export class AllFixturesComponent implements OnInit {
 
   constructor(
     private appRestService: AppRestService,
-    public route: ActivatedRoute) {
-
+    public route: ActivatedRoute){
   }
 
   ngOnInit(): void {
     this.appRestService.getAllFixtures()
       .subscribe(
-        fixture => this.fixtures = fixture,
+        fixtures => this.fixtures = fixtures,
         error => this.errorMessage = <any>error);
   }
 }

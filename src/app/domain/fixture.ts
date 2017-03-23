@@ -1,8 +1,8 @@
-import {Team} from './team';
 export class Fixture {
-  'id': String
-  'homeTeam': Team;
-  'awayTeam': Team;
+  'id': String;
   'date': Date;
-  'readableDate': String;
+  'dayOfTheYear' : number;
+  'rotation': number;
+  'translateX' : number;
+  'translateY' : number;
 }

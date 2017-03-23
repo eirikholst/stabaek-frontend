@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app.component';
 import { ROUTES } from "./app.routes";
-import { AllFixturesComponent } from './components/fixture/fixtures.component';
-import { StabaekFixturesComponent } from './components/fixture/stabaek-fixtures.component';
+import { AllFixturesComponent } from './components/fixtureList/fixtureList.component';
+import { StabaekFixturesComponent } from './components/fixtureList/stabaek-fixtures.component';
 import { AllTeamsComponent } from './components/team/teams.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
 import {OrderByDate} from "./components/pipes/orderByDate";
+import {AddRotationToFixture} from "./components/pipes/addRotationToFixture";
+import {TestComponent} from "./components/test/test.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {OrderByDate} from "./components/pipes/orderByDate";
     AllFixturesComponent,
     AllTeamsComponent,
     StabaekFixturesComponent,
-    OrderByDate
+    OrderByDate,
+    AddRotationToFixture,
+    TestComponent
   ],
   imports: [
     BrowserModule,

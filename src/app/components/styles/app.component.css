@@ -9,6 +9,8 @@ html, body, .container {
 
 .list-item-transparent {
   min-width: 300px;
+  width: 90%;
+  max-width: 500px;
   border: none;
   background: transparent;
 }

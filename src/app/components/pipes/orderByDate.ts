@@ -2,7 +2,6 @@
  * Created by eirik.holst on 17.03.2017.
  */
 import { Pipe, PipeTransform } from '@angular/core';
-//Todo is the interface for our todo object
 import {Fixture} from '../../domain/fixture';
 import {isBlank} from "@angular/platform-browser-dynamic/src/facade/lang";
 

@@ -15,23 +15,26 @@ html, body, .container {
   background: transparent;
 }
 
-/*.list-group-transparent {*/
-/*width: 500px;*/
-/*border: none;*/
-/*background: transparent;*/
-/*justify-content: center;*/
-/*}*/
-
 .top-padding{
   padding-top: 5rem;
   justify-content: center;
 }
 
+.left-div{
+  float: left;
+}
+.div-right-pane{
+  margin-left: 15%;
+}
 
-/*li {*/
-  /*width: 500px;*/
-  /*border: none;*/
-  /*background: transparent;*/
-  /*justify-content: center;*/
-/*}*/
+@media screen and (max-width: 600px){
+  .hidden-on-mobile{
+    display: none;
+  }
+}
 
+@media screen and (min-width: 600px){
+  .hidden-on-desktop{
+    display: none;
+  }
+}

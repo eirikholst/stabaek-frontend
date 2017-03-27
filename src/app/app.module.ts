@@ -10,22 +10,28 @@ import { AppComponent } from './components/app.component';
 import { ROUTES } from "./app.routes";
 import { AllFixturesComponent } from './components/fixtureList/fixtureList.component';
 import { StabaekFixturesComponent } from './components/fixtureList/stabaek-fixtures.component';
-import { AllTeamsComponent } from './components/team/teams.component';
+import { AllTeamsComponent } from './components/teamList/teamList.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
 import {OrderByDate} from "./components/pipes/orderByDate";
 import {AddRotationToFixture} from "./components/pipes/addRotationToFixture";
 import {TestComponent} from "./components/test/test.component";
+import {FixtureComponent} from "./components/fixture/fixture.component";
+import {TeamComponent} from "./components/team/team.component";
+import {AddReadableDateToFixture} from "./components/pipes/addReadableDateToFixture";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     AllFixturesComponent,
+    FixtureComponent,
     AllTeamsComponent,
+    TeamComponent,
     StabaekFixturesComponent,
     OrderByDate,
     AddRotationToFixture,
-    TestComponent
+    AddReadableDateToFixture,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

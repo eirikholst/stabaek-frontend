@@ -1,8 +1,20 @@
+import { Stadium } from './stadium';
+import { Team } from "./team";
+
 export class Fixture {
   'id': String;
   'date': Date;
-  'dayOfTheYear' : number;
+  'readableDate': String;
+  'dayOfTheYear': number;
   'rotation': number;
-  'translateX' : number;
-  'translateY' : number;
+  'translateX': number;
+  'translateY': number;
+  'homeTeamId': String
+  'homeTeamNameString': String
+  'awayTeamId': String
+  'awayTeamNameString': String
+  'stadium': Stadium;
+  'stadiumNameString': String;
+  'homeTeam': Team;
+  'awayTeam': Team;
 }

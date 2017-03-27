@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'all-teams',
-  templateUrl: 'teams.component.html',
+  templateUrl: 'teamList.component.html',
   styleUrls: [
     '../styles/app.component.css',
   ],

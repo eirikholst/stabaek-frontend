@@ -1,1 +1,29 @@
-<h1>{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</h1>
+<section *ngIf="isLoading && !errorMessage">
+  Loading our hyperdrives!!! Retrieving data...
+</section>
+
+
+<section *ngIf="fixture">
+  <h1 style="color: #eeeeee">
+    <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
+      {{fixture.homeTeamNameString}}
+    </a>
+     -
+    <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
+      {{fixture.awayTeamNameString}}
+    </a>
+  </h1>
+
+  <p style="color: #eeeeee">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
+
+</section>
+
+<!--<p style="color: #eeeeee">{{(fixture | async)?.readableDate}}</p>-->
+<!--<p style="color: #eeeeee">{{(fixture | async)?.stadiumNameString}}</p>-->
+<!--<a [routerLink]="['/teams', fixture.homeTeamId]" style="color: #eeeeee">-->
+<!--homeTeamId: {{(fixture | async)?.homeTeamId}}-->
+<!--</a>-->
+
+<section *ngIf="errorMessage">
+  ERROR: {{errorMessage}}
+</section>

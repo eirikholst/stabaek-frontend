@@ -16,19 +16,9 @@ export class AddRotationToFixture implements PipeTransform {
 
       var radius = 250;
 
-      // if(i == 0) fixture.rotation = 0;
-      // else if (i == 1) fixture.rotation = 45;
-      // else if (i == 2) fixture.rotation = 90;
-      // else if (i == 3) fixture.rotation = 135;
-      // else if (i == 4) fixture.rotation = 180;
-      // else if (i == 5) fixture.rotation = 225;
-      // else if (i == 6) fixture.rotation = 270;
-      // else fixture.rotation = 315;
-
       fixture.rotation = 90-fixture.dayOfTheYear;
       var radians = fixture.rotation * (Math.PI / 180);
-      // if(radians > (Math.PI / 2) && radians < (3*Math.PI / 2))
-      //   radians += Math.PI;
+
       fixture.translateX = radius*Math.cos(radians);
       fixture.translateY = 400 +radius*Math.sin(radians) -81*i;
     }

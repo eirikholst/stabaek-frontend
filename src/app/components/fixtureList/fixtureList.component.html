@@ -1,21 +1,45 @@
-<div class="row top-padding">
-  <div class="col-sm-4">
-    <ul class="list-group list-group-transparent">
-      <li class="list-group-item list-item-transparent"
-          *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture">
-        <div class="list-group">
-          <div class="row list-group-item">
-               <!--[ngStyle]="{-->
-                 <!--'transform':-->
-                    <!--'translateX(' + fixture.translateX + 'px)' +-->
-                    <!--'translateY(' + fixture.translateY + 'px)' +-->
-                    <!--'rotate(' + fixture.rotation + 'deg)',-->
-                 <!--'webkit-transform-origin': '50% 50%'}">-->
-            <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}} - {{fixture.dayOfTheYear}}</span>
-            <span class="pull-right">{{fixture.readableDate}}</span>
+<section class="container-centered hidden-on-mobile">
+  <div class="row top-padding left-div">
+    <div class="col-sm-4">
+      <ul class="list-group list-group-transparent">
+        <li class="list-group-item list-item-transparent"
+            *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
+          <div class="list-group">
+            <a class="row list-group-item" [routerLink]="['/fixtures', {outlets: {'fixtureInfoOutlet': ['fixture.id']}}]">
+              <!--[ngStyle]="{-->
+              <!--'transform':-->
+              <!--'translateX(' + fixture.translateX + 'px)' +-->
+              <!--'translateY(' + fixture.translateY + 'px)' +-->
+              <!--'rotate(' + fixture.rotation + 'deg)',-->
+              <!--'webkit-transform-origin': '50% 50%'}">-->
+              <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+              <span class="pull-right">{{fixture.readableDate}}</span>
+            </a>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+  <div class=" top-padding div-right-pane hidden-on-mobile">
+    <h1 style="color: #eeeeee">TEST</h1>
+    <router-outlet name="fixtureInfoOutlet"></router-outlet>
+  </div>
+</section>
+
+<section class="container-centered hidden-on-desktop">
+  <div class="row top-padding">
+    <div class="col-sm-4">
+      <ul class="list-group list-group-transparent">
+        <li class="list-group-item list-item-transparent"
+            *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
+          <div class="list-group">
+            <a class="row list-group-item" [routerLink]="['/fixtures', fixture.id]">
+              <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+              <span class="pull-right">{{fixture.readableDate}}</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

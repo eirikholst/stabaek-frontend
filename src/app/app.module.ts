@@ -8,8 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app.component';
 import { ROUTES } from "./app.routes";
-import { AllFixturesComponent } from './components/fixtureList/fixtureList.component';
-import { StabaekFixturesComponent } from './components/fixtureList/stabaek-fixtures.component';
+import { FixtureListComponent } from './components/fixtureList/fixtureList.component';
 import { AllTeamsComponent } from './components/teamList/teamList.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
 import {OrderByDate} from "./components/pipes/orderByDate";
@@ -18,16 +17,17 @@ import {TestComponent} from "./components/test/test.component";
 import {FixtureComponent} from "./components/fixture/fixture.component";
 import {TeamComponent} from "./components/team/team.component";
 import {AddReadableDateToFixture} from "./components/pipes/addReadableDateToFixture";
+import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AllFixturesComponent,
+    FixtureListComponent,
     FixtureComponent,
+    FixtureOverviewComponent,
     AllTeamsComponent,
     TeamComponent,
-    StabaekFixturesComponent,
     OrderByDate,
     AddRotationToFixture,
     AddReadableDateToFixture,

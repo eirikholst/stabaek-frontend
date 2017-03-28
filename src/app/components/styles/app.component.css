@@ -27,13 +27,17 @@ html, body, .container {
   margin-left: 15%;
 }
 
-@media screen and (max-width: 600px){
+.width-600{
+  width: 600px;
+}
+
+@media screen and (max-width: 1080px){
   .hidden-on-mobile{
     display: none;
   }
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 1080px){
   .hidden-on-desktop{
     display: none;
   }

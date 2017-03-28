@@ -1,3 +1,7 @@
+<div *ngIf="!fixture">
+  <h1 style="color: #eeeeee">Please select a fixture</h1>
+</div>
+
 <section *ngIf="isLoading && !errorMessage">
   Loading our hyperdrives!!! Retrieving data...
 </section>
@@ -18,12 +22,7 @@
 
 </section>
 
-<!--<p style="color: #eeeeee">{{(fixture | async)?.readableDate}}</p>-->
-<!--<p style="color: #eeeeee">{{(fixture | async)?.stadiumNameString}}</p>-->
-<!--<a [routerLink]="['/teams', fixture.homeTeamId]" style="color: #eeeeee">-->
-<!--homeTeamId: {{(fixture | async)?.homeTeamId}}-->
-<!--</a>-->
 
 <section *ngIf="errorMessage">
-  ERROR: {{errorMessage}}
+  <h1 style="color: #eeeeee">ERROR: {{errorMessage}}</h1>
 </section>

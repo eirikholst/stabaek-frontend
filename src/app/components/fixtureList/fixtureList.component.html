@@ -5,13 +5,8 @@
         <li class="list-group-item list-item-transparent"
             *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
           <div class="list-group">
-            <a class="row list-group-item" [routerLink]="['/fixtures', {outlets: {'fixtureInfoOutlet': ['fixture.id']}}]">
-              <!--[ngStyle]="{-->
-              <!--'transform':-->
-              <!--'translateX(' + fixture.translateX + 'px)' +-->
-              <!--'translateY(' + fixture.translateY + 'px)' +-->
-              <!--'rotate(' + fixture.rotation + 'deg)',-->
-              <!--'webkit-transform-origin': '50% 50%'}">-->
+            <a class="row list-group-item"
+            (click)="showFixtureInfo(fixture.id)">
               <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
               <span class="pull-right">{{fixture.readableDate}}</span>
             </a>
@@ -20,10 +15,10 @@
       </ul>
     </div>
   </div>
-  <div class=" top-padding div-right-pane hidden-on-mobile">
-    <h1 style="color: #eeeeee">TEST</h1>
-    <router-outlet name="fixtureInfoOutlet"></router-outlet>
-  </div>
+  <!--<div class=" top-padding div-right-pane hidden-on-mobile">-->
+    <!--<h1 style="color: #eeeeee">TEST</h1>-->
+    <!--<router-outlet name="fixtureInfoOutlet"></router-outlet>-->
+  <!--</div>-->
 </section>
 
 <section class="container-centered hidden-on-desktop">

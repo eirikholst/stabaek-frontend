@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navbar',
@@ -9,4 +10,9 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class NavbarComponent {
+
+  constructor(
+    private router: Router,
+  ) { }
+
 }

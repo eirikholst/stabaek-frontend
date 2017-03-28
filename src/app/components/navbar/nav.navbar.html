@@ -17,15 +17,15 @@
           Home
           </a>
         </li>
+        <!--<li>-->
+          <!--<a class="nav-link" [routerLink]=" ['./stabaek-fixtures'] "-->
+             <!--routerLinkActive="active"-->
+             <!--[routerLinkActiveOptions]= "{exact: true}">-->
+          <!--Stabæk-->
+          <!--</a>-->
+        <!--</li>-->
         <li>
-          <a class="nav-link" [routerLink]=" ['./stabaek-fixtures'] "
-             routerLinkActive="active"
-             [routerLinkActiveOptions]= "{exact: true}">
-          Stabæk
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" [routerLink]=" ['./fixtures'] "
+          <a class="nav-link" [routerLink]=" ['./fixtures',{outlets: {'list': ['fixtureList'], 'fixtureInfo': ['none']}}] "
              routerLinkActive="active"
              [routerLinkActiveOptions]= "{exact: true}">
           Fixtures

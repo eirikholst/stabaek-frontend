@@ -1,20 +1,20 @@
 import {RouterModule} from '@angular/router';
-import {AllFixturesComponent} from "./components/fixtureList/fixtureList.component";
+import {FixtureListComponent} from "./components/fixtureList/fixtureList.component";
 import {AllTeamsComponent} from "./components/teamList/teamList.component";
-import {StabaekFixturesComponent} from "./components/fixtureList/stabaek-fixtures.component";
 import {TestComponent} from "./components/test/test.component";
 import {FixtureComponent} from "./components/fixture/fixture.component";
 import {TeamComponent} from "./components/team/team.component";
+import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
 
 export const ROUTES = [
-  {path: '', component: StabaekFixturesComponent},
-  {path: 'fixtures', component: AllFixturesComponent, children:[
-    {path: ':id', component: FixtureComponent, outlet: 'fixtureInfoOutlet'}
+  {path: '', component: AllTeamsComponent},
+  {path: 'fixtures', component: FixtureOverviewComponent, children:[
+    {path: 'fixtureList', component: FixtureListComponent, outlet: 'list'},
+    {path: ':id', component: FixtureComponent, outlet: 'fixtureInfo'}
   ]},
-  {path: 'stabaek-fixtures', component: StabaekFixturesComponent},
   {path: 'teams', component: AllTeamsComponent},
   {path: 'test', component: TestComponent},
-  {path: 'fixtures/:id', component: FixtureComponent},
+  // {path: 'fixtures/:id', component: FixtureComponent},
   {path: 'teams/:id', component: TeamComponent}
 ];
 

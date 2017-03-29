@@ -8,11 +8,12 @@
 
 
 <section *ngIf="fixture">
+
   <h1 style="color: #eeeeee">
     <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
       {{fixture.homeTeamNameString}}
     </a>
-     -
+    -
     <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
       {{fixture.awayTeamNameString}}
     </a>
@@ -20,9 +21,31 @@
 
   <p style="color: #eeeeee">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
 
+  <nav class="nav nav-masthead">
+    <a class="nav-link " (click)="showHomeTeamInfo()">HomeTeam</a>
+    <a class="nav-link " (click)="showAwayTeamInfo()">AwayTeam</a>
+  </nav>
+
+  <div *ngIf="isShowingTeamInfo">
+    <div class="top-padding">
+      <div class="col-sm-4">
+        <ul class="list-group list-group-transparent">
+          <li class="list-group-item list-item-transparent"
+              *ngFor="let player of playersSubjectToInfoExtraction | async">
+            <div class="list-group">
+              <a class="row list-group-item" [routerLink]="['/players', player.id]">
+                <span class="pull-left black">{{player.number}}: {{player.firstName}} {{player.lastName}}</span>
+                <span class="pull-right black">{{player.position}}</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 
-<section *ngIf="errorMessage">
-  <h1 style="color: #eeeeee">ERROR: {{errorMessage}}</h1>
-</section>
+<!--<section *ngIf="errorMessage">-->
+<!--<h1 style="color: #eeeeee">ERROR: {{errorMessage}}</h1>-->
+<!--</section>-->

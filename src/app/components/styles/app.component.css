@@ -15,9 +15,21 @@ html, body, .container {
   background: transparent;
 }
 
+.black{
+  color: black;
+}
+
+.transparent{
+  background: transparent;
+}
+
 .top-padding{
   padding-top: 5rem;
   justify-content: center;
+}
+
+.margin-2{
+  margin: 2rem;
 }
 
 .left-div{
@@ -29,6 +41,10 @@ html, body, .container {
 
 .width-600{
   width: 600px;
+}
+
+.width-200{
+  width: 200px;
 }
 
 @media screen and (max-width: 1080px){

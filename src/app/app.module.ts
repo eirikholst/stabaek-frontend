@@ -18,6 +18,7 @@ import {FixtureComponent} from "./components/fixture/fixture.component";
 import {TeamComponent} from "./components/team/team.component";
 import {AddReadableDateToFixture} from "./components/pipes/addReadableDateToFixture";
 import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
+import {PlayerComponent} from "./components/player/player.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOver
     FixtureComponent,
     FixtureOverviewComponent,
     AllTeamsComponent,
+    PlayerComponent,
     TeamComponent,
     OrderByDate,
     AddRotationToFixture,

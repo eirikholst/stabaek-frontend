@@ -1,12 +1,8 @@
-<section class="hidden-on-mobile">
+<section class="container-centered">
   <div class="top-padding left-div">
-  <router-outlet name="list"></router-outlet>
+  <router-outlet name="fixtureListOutlet"></router-outlet>
   </div>
-  <div class="top-padding div-right-pane width-600">
-    <router-outlet name="fixtureInfo"></router-outlet>
+  <div class="top-padding div-right-pane width-600 hidden-on-mobile">
+    <router-outlet name="fixtureInfoOutlet"></router-outlet>
   </div>
-</section>
-
-<section class="hidden-on-desktop">
-  <router-outlet name="fixtureList"></router-outlet>
 </section>

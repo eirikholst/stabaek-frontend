@@ -1,0 +1,15 @@
+<div *ngIf="!player">
+  <h1 style="color: #eeeeee">Please select a fixture</h1>
+</div>
+
+<section *ngIf="isLoading && !errorMessage">
+  Loading our hyperdrives!!! Retrieving data...
+</section>
+
+<section *ngIf="player">
+
+  <h1 style="color: #eeeeee">
+    {{player.firstName}} {{player.lastName}}
+  </h1>
+
+</section>

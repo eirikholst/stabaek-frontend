@@ -1,40 +1,28 @@
-<section class="container-centered hidden-on-mobile">
-  <div class="row top-padding left-div">
-    <div class="col-sm-4">
-      <ul class="list-group list-group-transparent">
-        <li class="list-group-item list-item-transparent"
-            *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
-          <div class="list-group">
-            <a class="row list-group-item"
-            (click)="showFixtureInfo(fixture.id)">
-              <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
-              <span class="pull-right">{{fixture.readableDate}}</span>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--<div class=" top-padding div-right-pane hidden-on-mobile">-->
-    <!--<h1 style="color: #eeeeee">TEST</h1>-->
-    <!--<router-outlet name="fixtureInfoOutlet"></router-outlet>-->
-  <!--</div>-->
-</section>
+<nav class="nav nav-masthead">
+  <a class="nav-link " (click)="showStabaekMatches()">Stabæk</a>
+  <a class="nav-link " (click)="showAllMatches()">Alle</a>
+</nav>
 
-<section class="container-centered hidden-on-desktop">
-  <div class="row top-padding">
-    <div class="col-sm-4">
-      <ul class="list-group list-group-transparent">
-        <li class="list-group-item list-item-transparent"
-            *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
-          <div class="list-group">
-            <a class="row list-group-item" [routerLink]="['/fixtures', fixture.id]">
-              <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
-              <span class="pull-right">{{fixture.readableDate}}</span>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
+<div class="top-padding">
+  <div class="col-sm-4">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent"
+          *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
+        <div class="list-group hidden-on-mobile">
+          <a class="row list-group-item black"
+             (click)="showFixtureInfo(fixture.id)">
+            <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+            <span class="pull-right">{{fixture.readableDate}}</span>
+          </a>
+        </div>
+        <div class="list-group hidden-on-desktop">
+          <a class="row list-group-item black" [routerLink]="['/mobileFixtures', fixture.id]">
+            <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+            <span class="pull-right">{{fixture.readableDate}}</span>
+          </a>
+        </div>
+      </li>
+    </ul>
   </div>
-</section>
+</div>
+

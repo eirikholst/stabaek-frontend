@@ -5,17 +5,19 @@ import {TestComponent} from "./components/test/test.component";
 import {FixtureComponent} from "./components/fixture/fixture.component";
 import {TeamComponent} from "./components/team/team.component";
 import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
+import {PlayerComponent} from "./components/player/player.component";
 
 export const ROUTES = [
   {path: '', component: AllTeamsComponent},
   {path: 'fixtures', component: FixtureOverviewComponent, children:[
-    {path: 'fixtureList', component: FixtureListComponent, outlet: 'list'},
-    {path: ':id', component: FixtureComponent, outlet: 'fixtureInfo'}
+    {path: 'fixtureList', component: FixtureListComponent, outlet: 'fixtureListOutlet'},
+    {path: ':id', component: FixtureComponent, outlet: 'fixtureInfoOutlet'}
   ]},
   {path: 'teams', component: AllTeamsComponent},
   {path: 'test', component: TestComponent},
-  // {path: 'fixtures/:id', component: FixtureComponent},
-  {path: 'teams/:id', component: TeamComponent}
+  {path: 'mobileFixtures/:id', component: FixtureComponent},
+  {path: 'teams/:id', component: TeamComponent},
+  {path: 'players/:id', component: PlayerComponent}
 ];
 
 export const appRoutingProviders: any[] = [

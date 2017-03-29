@@ -17,15 +17,8 @@
           Home
           </a>
         </li>
-        <!--<li>-->
-          <!--<a class="nav-link" [routerLink]=" ['./stabaek-fixtures'] "-->
-             <!--routerLinkActive="active"-->
-             <!--[routerLinkActiveOptions]= "{exact: true}">-->
-          <!--Stabæk-->
-          <!--</a>-->
-        <!--</li>-->
         <li>
-          <a class="nav-link" [routerLink]=" ['./fixtures',{outlets: {'list': ['fixtureList'], 'fixtureInfo': ['none']}}] "
+          <a class="nav-link" [routerLink]=" ['./fixtures',{outlets: {'fixtureListOutlet': ['fixtureList'], 'fixtureInfoOutlet': ['none']}}] "
              routerLinkActive="active"
              [routerLinkActiveOptions]= "{exact: true}">
           Fixtures

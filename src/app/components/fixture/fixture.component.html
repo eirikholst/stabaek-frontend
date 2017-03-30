@@ -2,38 +2,48 @@
   <h1 style="color: #eeeeee">Please select a fixture</h1>
 </div>
 
-<section *ngIf="isLoading && !errorMessage">
-  Loading our hyperdrives!!! Retrieving data...
-</section>
+<!--<section *ngIf="isLoading && !errorMessage">-->
+  <!--Loading our hyperdrives!!! Retrieving data...-->
+<!--</section>-->
 
 
 <section *ngIf="fixture">
 
-  <h1 style="color: #eeeeee">
-    <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
-      {{fixture.homeTeamNameString}}
-    </a>
-    -
-    <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
-      {{fixture.awayTeamNameString}}
-    </a>
-  </h1>
+  <div class="container">
+    <h1 style="color: #eeeeee; margin: 0">
+      <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
+        {{fixture.homeTeamNameString}}
+      </a>
+      -
+      <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
+        {{fixture.awayTeamNameString}}
+      </a>
+    </h1>
+  </div>
 
-  <p style="color: #eeeeee">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
+  <p style="color: #eeeeee; float: right">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
 
-  <nav class="nav nav-masthead">
-    <a class="nav-link " (click)="showHomeTeamInfo()">HomeTeam</a>
-    <a class="nav-link " (click)="showAwayTeamInfo()">AwayTeam</a>
-  </nav>
+  <ul class="tabs secondary-nav">
+    <li class="tabs__item">
+      <a class="tabs__link" (click)="showHomeTeamInfo()" id="defaultOpen"> {{fixture.homeTeamNameString}}spillere</a>
+    </li>
+    <li class="tabs__item">
+      <a class="tabs__link" (click)="showAwayTeamInfo()">{{fixture.awayTeamNameString}}spillere</a>
+    </li>
+  </ul>
 
-  <div *ngIf="isShowingTeamInfo">
-    <div class="top-padding">
+  <script>
+    document.getElementById("defaultOpen").click();
+  </script>
+
+  <div class="container-centered">
+    <div *ngIf="isShowingTeamInfo">
       <div class="col-sm-4">
         <ul class="list-group list-group-transparent">
           <li class="list-group-item list-item-transparent"
               *ngFor="let player of playersSubjectToInfoExtraction | async">
             <div class="list-group">
-              <a class="row list-group-item" [routerLink]="['/players', player.id]">
+              <a class="row list-group-item pointer" [routerLink]="['/players', player.id]">
                 <span class="pull-left black">{{player.number}}: {{player.firstName}} {{player.lastName}}</span>
                 <span class="pull-right black">{{player.position}}</span>
               </a>

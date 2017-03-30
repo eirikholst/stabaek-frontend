@@ -8,7 +8,7 @@
       <li class="list-group-item list-item-transparent"
           *ngFor="let player of players | async">
         <div class="list-group">
-          <a class="row list-group-item" [routerLink]="['/players', player.id]">
+          <a class="row list-group-item pointer" [routerLink]="['/players', player.id]">
             <span class="pull-left">{{player.number}}: {{player.firstName}} {{player.lastName}}</span>
             <span class="pull-right">{{player.position}}</span>
           </a>

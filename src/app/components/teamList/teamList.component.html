@@ -4,7 +4,7 @@
       <li class="list-group-item list-item-transparent"
           *ngFor="let team of teams">
         <div class="list-group">
-          <a class="row list-group-item" [routerLink]="['/teams', team.id]">
+          <a class="row list-group-item pointer" [routerLink]="['/teams', team.id]">
             <p>{{team.name}}</p>
           </a>
         </div>

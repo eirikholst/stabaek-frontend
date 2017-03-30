@@ -1,18 +1,24 @@
 html, body, .container {
   background: rgb(0,0,112);
+  color: #eeeeee;
 }
 
 .container-centered {
   display: flex;
   justify-content: center;
+  margin: auto;
 }
 
 .list-item-transparent {
   min-width: 300px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   border: none;
   background: transparent;
+}
+
+.pointer{
+  cursor: pointer;
 }
 
 .black{
@@ -29,7 +35,19 @@ html, body, .container {
 }
 
 .margin-2{
-  margin: 2rem;
+  margin: 2rem auto;
+}
+
+.margin-1{
+  margin: 1rem auto;
+}
+
+.margin-0{
+  margin: 0px;
+}
+
+.margin-auto{
+  margin: auto;
 }
 
 .left-div{
@@ -43,8 +61,26 @@ html, body, .container {
   width: 600px;
 }
 
+.width-400{
+  width: 400px;
+}
+
 .width-200{
   width: 200px;
+}
+
+
+.player-avatar{
+  width: auto;
+  height: auto;
+  margin: 2rem;
+  max-width: 76px;
+  display: block;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  text-align: center;
+  align-self: center;
 }
 
 @media screen and (max-width: 1080px){
@@ -58,3 +94,79 @@ html, body, .container {
     display: none;
   }
 }
+
+
+.vertical-divider{
+  clear: both;
+  position: relative;
+}
+
+.vertical-divider:after {
+  clear: both;
+  content: " ";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.vertical-divider .column:not(:first-child):after, .vertical-divider .columns:not(:first-child):after{
+  background: #DDDDDD;
+  bottom: 0;
+  content: " ";
+  margin-left: -10px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.container-avatar {
+  position: relative;
+  padding: 0; }
+
+.container-avatar .column, .container .columns {
+  float: left;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+
+
+
+.tabs {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style: none;
+  display: table; /* [1] */
+  table-layout: fixed; /* [2] */
+  min-width: 300px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.tabs__item {
+  display: table-cell; /* [4] */
+}
+
+.tabs__link {
+  display: block; /* [5] */
+}
+
+.secondary-nav {
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden; /* [1] */
+}
+
+.secondary-nav a {
+  padding: 1em;
+  background-color: #1111AA;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.secondary-nav a:hover {
+  background-color: #5555FF;
+}
+

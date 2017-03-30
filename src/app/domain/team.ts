@@ -11,5 +11,6 @@ export class Team {
   'homeFixtures': Fixture[];
   'awayFixtures': Fixture[];
   'players': Player[];
+  'teamLogoUrl': String;
 
 }

@@ -1,15 +1,63 @@
 <div *ngIf="!player">
-  <h1 style="color: #eeeeee">Please select a fixture</h1>
+  <h1 style="color: #eeeeee">Please select a player</h1>
 </div>
 
 <section *ngIf="isLoading && !errorMessage">
   Loading our hyperdrives!!! Retrieving data...
 </section>
 
-<section *ngIf="player">
+<section *ngIf="player && playerStatistics">
 
-  <h1 style="color: #eeeeee">
-    {{player.firstName}} {{player.lastName}}
-  </h1>
+  <div class="container-avatar container-centered vertical-divider">
+    <div class="column">
+      <img src="{{player.profilePictureUrl}}" class="player-avatar">
+    </div>
+    <div class="column">
+      <img src="{{(team | async)?.teamLogoUrl}}" class="player-avatar">
+    </div>
+  </div>
 
+  <div class="container-centered">
+    <h1>
+      {{player.firstName}} {{player.lastName}}
+    </h1>
+  </div>
+
+  <div class="container-avatar container-centered vertical-divider">
+    <div class="column">
+      {{player.number}}
+    </div>
+    <div class="column">
+      {{player.position}}
+    </div>
+    <div class="column">
+      {{player.teamName}}
+    </div>
+  </div>
+
+  <div class="container-centered">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent"
+          *ngFor="let playerStatistic of playerStatistics">
+        <div class="list-group">
+          <div class="row list-group-item black">
+            <h4 class="black">
+              {{playerStatistic.stageName}}
+            </h4>
+            <p>Team: {{playerStatistic.teamName}}</p>
+            <p>Goals: {{playerStatistic.goals}}</p>
+            <p>Assists: {{playerStatistic.assists}}</p>
+            <p>Red Cards: {{playerStatistic.redCards}}</p>
+            <p>Yellow Cards: {{playerStatistic.yellowCards}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+
+<section *ngIf="!player || !playerStatistics">
+  <h3 class="black">Could not find player statistics ...</h3>
 </section>

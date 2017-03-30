@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {AppRestService} from "../../service/app.rest.service";
 import {Player} from "../../domain/player";
 import {ActivatedRoute} from "@angular/router";
+import {PlayerStatistic} from "../../domain/playerStatistic";
+import {Team} from "../../domain/team";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'player',
@@ -16,7 +19,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   private errorMessage: any;
   private sub: any;
-  private player : Player = null;
+  private _player : Player = null;
+  private team: Observable<Team> = null;
+  private playerStatistics: PlayerStatistic[] = null;
   private id: any;
   private isLoading : boolean = true;
 
@@ -38,6 +43,21 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  get player(): Player {
+    return this._player;
+  }
+
+  set player(value: Player) {
+    this._player = value;
+    if(value == null) return;
+    this.appRestService.getPlayerStatisticsByPlayer(value.id).subscribe(
+      playerStatistics => this.playerStatistics = playerStatistics,
+      error => this.errorMessage = error
+    );
+    this.team = this.appRestService.getTeam(value.teamIdString);
   }
 
 }

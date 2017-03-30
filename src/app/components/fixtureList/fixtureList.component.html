@@ -1,28 +1,33 @@
-<nav class="nav nav-masthead">
-  <a class="nav-link " (click)="showStabaekMatches()">Stabæk</a>
-  <a class="nav-link " (click)="showAllMatches()">Alle</a>
-</nav>
+<ul class="tabs secondary-nav">
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showStabaekMatches()" id="defaultOpen">Stabæk</a>
+  </li>
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showAllMatches()">Alle</a>
+  </li>
+</ul>
 
-<div class="top-padding">
-  <div class="col-sm-4">
-    <ul class="list-group list-group-transparent">
-      <li class="list-group-item list-item-transparent"
-          *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
-        <div class="list-group hidden-on-mobile">
-          <a class="row list-group-item black"
-             (click)="showFixtureInfo(fixture.id)">
-            <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
-            <span class="pull-right">{{fixture.readableDate}}</span>
-          </a>
-        </div>
-        <div class="list-group hidden-on-desktop">
-          <a class="row list-group-item black" [routerLink]="['/mobileFixtures', fixture.id]">
-            <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
-            <span class="pull-right">{{fixture.readableDate}}</span>
-          </a>
-        </div>
-      </li>
-    </ul>
-  </div>
+<script>
+  document.getElementById("defaultOpen").click();
+</script>
+
+<div class="col-sm-4">
+  <ul class="list-group list-group-transparent">
+    <li class="list-group-item list-item-transparent margin-auto"
+        *ngFor="let fixture of fixtures | orderByDate | addRotationToFixture | addReadableDateToFixture">
+      <div class="list-group hidden-on-mobile">
+        <a class="row list-group-item black pointer"
+           (click)="showFixtureInfo(fixture.id)">
+          <span class="pull-left black">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+          <span class="pull-right black">{{fixture.readableDate}}</span>
+        </a>
+      </div>
+      <div class="list-group hidden-on-desktop">
+        <a class="row list-group-item black pointer" [routerLink]="['/mobileFixtures', fixture.id]">
+          <span class="pull-left">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}</span>
+          <span class="pull-right">{{fixture.readableDate}}</span>
+        </a>
+      </div>
+    </li>
+  </ul>
 </div>
-

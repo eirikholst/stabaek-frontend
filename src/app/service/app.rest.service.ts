@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import {Team} from '../domain/team';
 import {Fixture} from '../domain/fixture';
 import {Player} from "../domain/player";
+import {PlayerStatistic} from "../domain/playerStatistic";
 
 @Injectable()
 export class AppRestService {
@@ -57,6 +58,18 @@ export class AppRestService {
 
   getPlayer(id: any): Observable<Player> {
     return this.http.get(this.restUrl + 'players/' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getPlayerStatisticsByPlayer(id: any): Observable<PlayerStatistic[]> {
+    return this.http.get(this.restUrl + 'playerStatistics/byPlayer=' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getPlayerStatisticsByStage(id: any): Observable<PlayerStatistic[]> {
+    return this.http.get(this.restUrl + 'playerStatistics/byStage=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }

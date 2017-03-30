@@ -8,5 +8,6 @@ export class Player{
   'position': String;
   'team': Team;
   'number': number;
-
+  'profilePictureUrl': String;
+  'teamIdString': String;
 }

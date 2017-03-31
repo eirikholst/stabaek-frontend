@@ -21,12 +21,13 @@ export class FixtureComponent implements OnInit, OnDestroy {
   private errorMessage: any;
   private sub: any;
   private _fixture: Fixture = null;
-  private stadium: Observable<Stadium>;
+  private _stadium: Stadium = null;
   private id: any;
   private isLoading: boolean = true;
   private isShowingTeamInfo: boolean = false;
   private teamSubjectToInfoExtraction : Observable<Team>;
   private playersSubjectToInfoExtraction : Observable<Player[]>;
+
 
   constructor(private appRestService: AppRestService,
               public route: ActivatedRoute) {
@@ -76,6 +77,16 @@ export class FixtureComponent implements OnInit, OnDestroy {
     this._fixture = value;
     this.showHomeTeamInfo();
     if(value == null) return;
-    this.stadium = this.appRestService.getStadium(value.stadiumIdString);
+    this.appRestService.getStadium(value.stadiumIdString).subscribe(
+      stadium => this.stadium = stadium
+    );
+  }
+
+  get stadium(): Stadium {
+    return this._stadium;
+  }
+
+  set stadium(value: Stadium) {
+    this._stadium = value;
   }
 }

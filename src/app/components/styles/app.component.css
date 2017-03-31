@@ -1,5 +1,5 @@
 html, body, .container {
-  background: rgb(0,0,112);
+  background: rgb(0,55,99);
   color: #eeeeee;
 }
 
@@ -53,8 +53,9 @@ html, body, .container {
 .left-div{
   float: left;
 }
+
 .div-right-pane{
-  margin-left: 15%;
+  margin-left: 25%;
 }
 
 .width-600{
@@ -129,7 +130,14 @@ html, body, .container {
   margin-left: 10px;
   margin-right: 10px; }
 
-
+.stadium-image{
+  opacity: 0.3;
+  width: auto;
+  height: auto;
+  max-height: 400px;
+  max-width: 400px;
+  display: block;
+}
 
 
 .tabs {
@@ -160,13 +168,24 @@ html, body, .container {
 
 .secondary-nav a {
   padding: 1em;
-  background-color: #1111AA;
-  color: #fff;
+  background-color: #eeeeee;
+  color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
 .secondary-nav a:hover {
   background-color: #5555FF;
+}
+
+.wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.wrap img + .content {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 

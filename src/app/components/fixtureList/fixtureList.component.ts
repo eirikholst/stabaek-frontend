@@ -8,7 +8,6 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: 'fixtureList.component.html',
   styleUrls: [
     '../styles/app.component.css',
-    '../styles/navmasthead.component.css'
   ],
   providers: [AppRestService]
 })

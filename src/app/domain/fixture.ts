@@ -15,6 +15,7 @@ export class Fixture {
   'awayTeamNameString': String
   'stadium': Stadium;
   'stadiumNameString': String;
+  'stadiumIdString': String;
   'homeTeam': Team;
   'awayTeam': Team;
 }

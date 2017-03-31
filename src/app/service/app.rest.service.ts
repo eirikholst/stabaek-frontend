@@ -10,6 +10,7 @@ import {Team} from '../domain/team';
 import {Fixture} from '../domain/fixture';
 import {Player} from "../domain/player";
 import {PlayerStatistic} from "../domain/playerStatistic";
+import {Stadium} from "../domain/stadium";
 
 @Injectable()
 export class AppRestService {
@@ -55,6 +56,11 @@ export class AppRestService {
       .catch(this.handleError);
   }
 
+  getStadium(id: String): Observable<Stadium> {
+    return this.http.get(this.restUrl + 'stadiums/' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 
   getPlayer(id: any): Observable<Player> {
     return this.http.get(this.restUrl + 'players/' + id)
@@ -74,6 +80,7 @@ export class AppRestService {
       .catch(this.handleError);
   }
 
+
   private extractData(res: Response) {
     let body = res.json();
     return body || {};
@@ -91,5 +98,4 @@ export class AppRestService {
     console.error(errMsg);
     return Promise.reject(errMsg);
   }
-
 }

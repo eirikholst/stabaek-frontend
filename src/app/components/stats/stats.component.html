@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<ul class="tabs secondary-nav">
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showTopScorers()" id="defaultOpen">Top scorer</a>
+  </li>
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showAssists()">Assists</a>
+  </li>
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showRedCards()">Red Cards</a>
+  </li>
+  <li class="tabs__item">
+    <a class="tabs__link" (click)="showYellowCards()">Yellow Cards</a>
+  </li>
+</ul>
 
-</body>
-</html>
+
+<div *ngIf="showTopScorersFlag">
+  <div class="col-sm-4">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent margin-auto"
+          *ngFor="let playerStatistic of playerStatistics | orderByGoals">
+        <div class="list-group">
+          <a class="row list-group-item black pointer">
+            <span class="pull-left black">{{playerStatistic.player.firstName}} {{playerStatistic.player.lastName}} ({{playerStatistic.teamName}})</span>
+            <span class="pull-right black">{{playerStatistic.goals}}</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="showAssistsFlag">
+  <div class="col-sm-4">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent margin-auto"
+          *ngFor="let playerStatistic of playerStatistics | orderByAssists">
+        <div class="list-group">
+          <a class="row list-group-item black pointer">
+            <span class="pull-left black">{{playerStatistic.player.firstName}} {{playerStatistic.player.lastName}} ({{playerStatistic.teamName}})</span>
+            <span class="pull-right black">{{playerStatistic.assists}}</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="showRedCardsFlag">
+  <div class="col-sm-4">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent margin-auto"
+          *ngFor="let playerStatistic of playerStatistics | orderByRedCards">
+        <div class="list-group">
+          <a class="row list-group-item black pointer">
+            <span class="pull-left black">{{playerStatistic.player.firstName}} {{playerStatistic.player.lastName}} ({{playerStatistic.teamName}})</span>
+            <span class="pull-right black">{{playerStatistic.redCards}}</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="showYellowCardsFlag">
+  <div class="col-sm-4">
+    <ul class="list-group list-group-transparent">
+      <li class="list-group-item list-item-transparent margin-auto"
+          *ngFor="let playerStatistic of playerStatistics | orderByYellowCards">
+        <div class="list-group">
+          <a class="row list-group-item black pointer">
+            <span class="pull-left black">{{playerStatistic.player.firstName}} {{playerStatistic.player.lastName}} ({{playerStatistic.teamName}})</span>
+            <span class="pull-right black">{{playerStatistic.yellowCards}}</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

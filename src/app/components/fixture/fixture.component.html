@@ -1,5 +1,5 @@
 <div *ngIf="!fixture">
-  <h1 style="color: #eeeeee">Please select a fixture</h1>
+  <h1 style="color: #eeeeee">Select a fixture</h1>
 </div>
 
 <!--<section *ngIf="isLoading && !errorMessage">-->
@@ -9,17 +9,20 @@
 
 <section *ngIf="fixture">
 
-  <div class="container">
+    <div class="container">
     <h1 style="color: #eeeeee; margin: 0">
       <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
         {{fixture.homeTeamNameString}}
       </a>
       -
+
       <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
         {{fixture.awayTeamNameString}}
       </a>
     </h1>
   </div>
+
+  <img src="{{(stadium | async)?.stadiumImageUrl}}" [style.width.px]="auto" [style.height]="300">
 
   <p style="color: #eeeeee; float: right">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
 

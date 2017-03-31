@@ -7,5 +7,6 @@ export class Stadium{
   'name': String;
   'team': Team;
   'fixtures': Fixture[];
+  'stadiumImageUrl': String;
 
 }

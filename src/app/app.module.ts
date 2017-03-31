@@ -19,6 +19,11 @@ import {TeamComponent} from "./components/team/team.component";
 import {AddReadableDateToFixture} from "./components/pipes/addReadableDateToFixture";
 import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
 import {PlayerComponent} from "./components/player/player.component";
+import {OrderByGoals} from "./components/pipes/orderByGoals";
+import {StatsComponent} from "./components/stats/stats.component";
+import {OrderByAssists} from "./components/pipes/orderByAssists";
+import {OrderByRedCards} from "./components/pipes/orderByRedCards";
+import {OrderByYellowCards} from "./components/pipes/orderByYellowCards";
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import {PlayerComponent} from "./components/player/player.component";
     AllTeamsComponent,
     PlayerComponent,
     TeamComponent,
+    StatsComponent,
     OrderByDate,
+    OrderByGoals,
+    OrderByAssists,
+    OrderByRedCards,
+    OrderByYellowCards,
     AddRotationToFixture,
     AddReadableDateToFixture,
     TestComponent,

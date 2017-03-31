@@ -5,13 +5,13 @@ import {Fixture} from "../../domain/fixture";
 import {Observable} from "rxjs";
 import {Team} from "../../domain/team";
 import {Player} from "../../domain/player";
+import {Stadium} from "../../domain/stadium";
 
 @Component({
   selector: 'fixtures',
   templateUrl: 'fixture.component.html',
   styleUrls: [
     '../styles/app.component.css',
-    '../styles/navmasthead.component.css'
   ],
   providers: [AppRestService]
 })
@@ -21,6 +21,7 @@ export class FixtureComponent implements OnInit, OnDestroy {
   private errorMessage: any;
   private sub: any;
   private _fixture: Fixture = null;
+  private stadium: Observable<Stadium>;
   private id: any;
   private isLoading: boolean = true;
   private isShowingTeamInfo: boolean = false;
@@ -74,5 +75,7 @@ export class FixtureComponent implements OnInit, OnDestroy {
   set fixture(value: Fixture) {
     this._fixture = value;
     this.showHomeTeamInfo();
+    if(value == null) return;
+    this.stadium = this.appRestService.getStadium(value.stadiumIdString);
   }
 }

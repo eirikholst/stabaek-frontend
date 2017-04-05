@@ -1,0 +1,45 @@
+.navbar-mobile {
+  background-color: white;
+  border-color: white;
+  border-radius: 0;
+}
+
+.navbar-brand-mobile {
+  padding: 1.5rem;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.navbar-link-mobile {
+  padding: 1rem;
+  font-size: 20px;
+  line-height: 1;
+  color: black;
+}
+
+.navbar-mobile .navbar-brand,
+.navbar-mobile .navbar-toggler {
+  color: black;
+}
+
+.navbar-mobile .navbar-brand:focus, .navbar-inverse .navbar-brand:hover,
+.navbar-mobile .navbar-toggler:focus,
+.navbar-mobile .navbar-toggler:hover {
+  color: black;
+}
+
+.navbar-mobile .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar-mobile .navbar-nav .nav-link:focus, .navbar-inverse .navbar-nav .nav-link:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-mobile .navbar-nav .open > .nav-link,
+.navbar-mobile .navbar-nav .active > .nav-link,
+.navbar-mobile .navbar-nav .nav-link.open,
+.navbar-mobile .navbar-nav .nav-link.active {
+  color: black;
+  font-weight: bold;
+}

@@ -131,7 +131,7 @@ html, body, .container {
   margin-right: 10px; }
 
 .stadium-image{
-  opacity: 0.3;
+  opacity: 0.5;
   width: auto;
   height: auto;
   max-height: 400px;
@@ -145,25 +145,26 @@ html, body, .container {
   margin-bottom: 2rem;
   padding: 0;
   list-style: none;
-  display: table; /* [1] */
-  table-layout: fixed; /* [2] */
+  display: table;
+  table-layout: fixed;
   min-width: 300px;
   width: 100%;
   max-width: 500px;
 }
 
 .tabs__item {
-  display: table-cell; /* [4] */
+  display: table-cell;
 }
 
 .tabs__link {
-  display: block; /* [5] */
+  display: block;
+  height: 5rem;
 }
 
 .secondary-nav {
   text-align: center;
   border-radius: 4px;
-  overflow: hidden; /* [1] */
+  overflow: hidden;
 }
 
 .secondary-nav a {
@@ -175,7 +176,8 @@ html, body, .container {
 }
 
 .secondary-nav a:hover {
-  background-color: #5555FF;
+  background-color: #FFFFFF;
+  cursor: pointer;
 }
 
 .wrap {
@@ -187,5 +189,6 @@ html, body, .container {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 3rem;
 }
 

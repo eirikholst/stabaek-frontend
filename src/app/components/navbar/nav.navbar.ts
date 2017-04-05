@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
   templateUrl: 'nav.navbar.html',
   styleUrls: [
     '../styles/app.component.css',
+    '../styles/navbar.desktop.css',
+    '../styles/navbar.mobile.css',
   ]
 })
 

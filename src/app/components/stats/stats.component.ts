@@ -16,7 +16,7 @@ import {Observable} from "rxjs";
 export class StatsComponent implements OnInit {
 
 
-  private stageId: String = "672248";
+  private stageId: String = "673879";
   private errorMessage: any;
   private playerStatistics: PlayerStatistic[];
   private showTopScorersFlag: boolean = true;

@@ -5,7 +5,6 @@ import {Fixture} from "../../domain/fixture";
 import {Observable} from "rxjs";
 import {Team} from "../../domain/team";
 import {Player} from "../../domain/player";
-import {Stadium} from "../../domain/stadium";
 
 @Component({
   selector: 'fixtures',
@@ -21,7 +20,7 @@ export class FixtureComponent implements OnInit, OnDestroy {
   private errorMessage: any;
   private sub: any;
   private _fixture: Fixture = null;
-  private _stadium: Stadium = null;
+  private _stadiumImageUrl: String = null;
   private id: any;
   private isLoading: boolean = true;
   private isShowingTeamInfo: boolean = false;
@@ -78,15 +77,17 @@ export class FixtureComponent implements OnInit, OnDestroy {
     this.showHomeTeamInfo();
     if(value == null) return;
     this.appRestService.getStadium(value.stadiumIdString).subscribe(
-      stadium => this.stadium = stadium
+      stadium => this.stadiumImageUrl = stadium.stadiumImageUrl
     );
   }
 
-  get stadium(): Stadium {
-    return this._stadium;
+  get stadiumImageUrl(): String {
+    return this._stadiumImageUrl;
   }
 
-  set stadium(value: Stadium) {
-    this._stadium = value;
+  set stadiumImageUrl(value: String) {
+    // if(value != null && value == "https://livecenter.nifs.no/assets/images/stadium_test.jpg")
+    //   value = null;
+    this._stadiumImageUrl = value;
   }
 }

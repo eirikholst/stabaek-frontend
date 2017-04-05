@@ -10,22 +10,26 @@
 <section *ngIf="fixture">
 
 
-  <div class="container">
-    <h1 style="color: #eeeeee; margin: 0">
-      <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
-        {{fixture.homeTeamNameString}}
-      </a>
-      -
+  <div class="wrap">
 
-      <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
-        {{fixture.awayTeamNameString}}
-      </a>
-    </h1>
+    <img src="{{stadiumImageUrl}}" class="stadium-image">
+
+    <div class="content">
+      <h1 style="color: #eeeeee; margin: 0">
+        <a style="color: #eeeeee" [routerLink]="['/teams', fixture.homeTeamId]">
+          {{fixture.homeTeamNameString}}
+        </a>
+        -
+
+        <a style="color: #eeeeee" [routerLink]="['/teams', fixture.awayTeamId]">
+          {{fixture.awayTeamNameString}}
+        </a>
+      </h1>
+
+
+      <p>{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
+    </div>
   </div>
-
-  <img src="{{stadium?.stadiumImageUrl}}" class="stadium-image">
-
-  <p style="color: #eeeeee; float: right">{{fixture.stadiumNameString}}, {{fixture.readableDate}}</p>
 
   <ul class="tabs secondary-nav">
     <li class="tabs__item">

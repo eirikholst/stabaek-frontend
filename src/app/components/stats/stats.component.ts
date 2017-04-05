@@ -2,7 +2,8 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {AppRestService} from "../../service/app.rest.service";
 import {ActivatedRoute} from "@angular/router";
 import {PlayerStatistic} from "../../domain/playerStatistic";
-import {Observable} from "rxjs";
+import {StatisticType} from "./statisticType";
+
 
 @Component({
   selector: 'stats',
@@ -13,16 +14,15 @@ import {Observable} from "rxjs";
   providers: [AppRestService]
 })
 
+
+
 export class StatsComponent implements OnInit {
 
 
   private stageId: String = "673879";
   private errorMessage: any;
   private playerStatistics: PlayerStatistic[];
-  private showTopScorersFlag: boolean = true;
-  private showAssistsFlag: boolean = false;
-  private showRedCardsFlag: boolean = false;
-  private showYellowCardsFlag: boolean = false;
+  private statisticType : StatisticType = StatisticType.Goals;
 
   constructor(private appRestService: AppRestService,
               private route: ActivatedRoute) {
@@ -35,31 +35,32 @@ export class StatsComponent implements OnInit {
         error => this.errorMessage = <any>error);
   }
 
+  getInfoString(playerStatistic: PlayerStatistic){
+    switch(this.statisticType){
+      case StatisticType.Goals:
+        return playerStatistic.goals;
+      case StatisticType.Assists:
+        return playerStatistic.assists;
+      case StatisticType.RedCards:
+        return playerStatistic.redCards;
+      case StatisticType.YellowCards:
+        return playerStatistic.yellowCards;
+    }
+  }
+
   showTopScorers(): void {
-    this.showAssistsFlag = false;
-    this.showTopScorersFlag = true;
-    this.showRedCardsFlag = false;
-    this.showYellowCardsFlag = false;
+    this.statisticType = StatisticType.Goals;
   }
 
   showAssists(): void {
-    this.showAssistsFlag = true;
-    this.showTopScorersFlag = false;
-    this.showRedCardsFlag = false;
-    this.showYellowCardsFlag = false;
+    this.statisticType = StatisticType.Assists;
   }
 
   showRedCards(): void {
-    this.showAssistsFlag = false;
-    this.showTopScorersFlag = false;
-    this.showRedCardsFlag = true;
-    this.showYellowCardsFlag = false;
+    this.statisticType = StatisticType.RedCards;
   }
 
   showYellowCards(): void {
-    this.showAssistsFlag = false;
-    this.showTopScorersFlag = false;
-    this.showRedCardsFlag = false;
-    this.showYellowCardsFlag = true;
-  }
+    this.statisticType = StatisticType.YellowCards;
+  }StatisticType
 }

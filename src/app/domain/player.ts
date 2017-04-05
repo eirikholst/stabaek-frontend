@@ -1,5 +1,5 @@
-
 import {Team} from "./team";
+
 export class Player{
 
   'id': String;

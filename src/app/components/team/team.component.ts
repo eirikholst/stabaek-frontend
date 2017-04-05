@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {Team} from "../../domain/team";
 import {ActivatedRoute} from "@angular/router";
 import {Player} from "../../domain/player";
+import {PlayerListElement} from "../player/player.listcomponent";
 
 @Component({
   selector: 'teams',

@@ -24,6 +24,7 @@ import {StatsComponent} from "./components/stats/stats.component";
 import {OrderByAssists} from "./components/pipes/orderByAssists";
 import {OrderByRedCards} from "./components/pipes/orderByRedCards";
 import {OrderByYellowCards} from "./components/pipes/orderByYellowCards";
+import {PlayerListElement} from "./components/player/player.listcomponent";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {OrderByYellowCards} from "./components/pipes/orderByYellowCards";
     FixtureOverviewComponent,
     AllTeamsComponent,
     PlayerComponent,
+    PlayerListElement,
     TeamComponent,
     StatsComponent,
     OrderByDate,

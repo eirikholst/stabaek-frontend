@@ -23,9 +23,7 @@ export class FixtureComponent implements OnInit, OnDestroy {
   private _stadiumImageUrl: String = null;
   private id: any;
   private isLoading: boolean = true;
-  private isShowingTeamInfo: boolean = false;
   private teamSubjectToInfoExtraction : Observable<Team>;
-  private playersSubjectToInfoExtraction : Observable<Player[]>;
 
 
   constructor(private appRestService: AppRestService,
@@ -50,21 +48,17 @@ export class FixtureComponent implements OnInit, OnDestroy {
   }
 
   showHomeTeamInfo() {
-    this.isShowingTeamInfo = false;
     if(this._fixture == null) return;
     this.showTeamInfo(this._fixture.homeTeamId);
   }
 
   showAwayTeamInfo() {
-    this.isShowingTeamInfo = false;
     if(this._fixture == null) return;
     this.showTeamInfo(this._fixture.awayTeamId);
   }
 
   showTeamInfo(id){
     this.teamSubjectToInfoExtraction = this.appRestService.getTeam(id);
-    this.playersSubjectToInfoExtraction = this.appRestService.getPlayers(id);
-    this.isShowingTeamInfo = true;
   }
 
 
@@ -86,8 +80,6 @@ export class FixtureComponent implements OnInit, OnDestroy {
   }
 
   set stadiumImageUrl(value: String) {
-    // if(value != null && value == "https://livecenter.nifs.no/assets/images/stadium_test.jpg")
-    //   value = null;
     this._stadiumImageUrl = value;
   }
 }

@@ -45,21 +45,7 @@
   </script>
 
   <div class="container-centered">
-    <div *ngIf="isShowingTeamInfo">
-      <div class="col-sm-4">
-        <ul class="list-group list-group-transparent">
-          <li class="list-group-item list-item-transparent"
-              *ngFor="let player of playersSubjectToInfoExtraction | async">
-            <div class="list-group">
-              <a class="row list-group-item pointer" [routerLink]="['/players', player.id]">
-                <span class="pull-left black">{{player.number}}: {{player.firstName}} {{player.lastName}}</span>
-                <span class="pull-right black">{{player.position}}</span>
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <team-player-list [team]="teamSubjectToInfoExtraction | async"></team-player-list>
   </div>
 </section>
 

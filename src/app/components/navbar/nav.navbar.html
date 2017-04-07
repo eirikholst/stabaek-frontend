@@ -42,12 +42,43 @@
               Stats
             </a>
           </li>
+          <!--<li>-->
+            <!--<a class="nav-link navbar-link-desktop" [routerLink]=" ['./test'] "-->
+               <!--routerLinkActive="active"-->
+               <!--[routerLinkActiveOptions]="{exact: true}">-->
+              <!--Test-->
+            <!--</a>-->
+          <!--</li>-->
+        </ul>
+        <ul class="nav pull-right">
           <li>
-            <a class="nav-link navbar-link-desktop" [routerLink]=" ['./test'] "
+            <div class="nav-link navbar-link-desktop navbar-next-fixture"
                routerLinkActive="active"
                [routerLinkActiveOptions]="{exact: true}">
-              Test
-            </a>
+              <div class="div-home-away">
+                <img src="{{nextHomeTeamLogoUrl}}" class="navbar-next-feature-image"/>
+                  :
+                <img src="{{nextAwayTeamLogoUrl}}" class="navbar-next-feature-image"/>
+              </div>
+              <div id="clockdiv">
+                <div>
+                  <span class="days"></span>
+                  <div class="smalltext">Days</div>
+                </div>
+                <div>
+                  <span class="hours"></span>
+                  <div class="smalltext">Hours</div>
+                </div>
+                <div>
+                  <span class="minutes"></span>
+                  <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                  <span class="seconds"></span>
+                  <div class="smalltext">Seconds</div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -101,15 +132,4 @@
       </div>
     </div>
   </nav>
-  <script>
-    $(document).ready(function () {
-      $(document).click(function (event) {
-        var clickover = $(event.target);
-        var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
-        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
-          $("button.navbar-toggle").click();
-        }
-      });
-    });
-  </script>
 </div>

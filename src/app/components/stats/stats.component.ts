@@ -62,5 +62,5 @@ export class StatsComponent implements OnInit {
 
   showYellowCards(): void {
     this.statisticType = StatisticType.YellowCards;
-  }StatisticType
+  }
 }

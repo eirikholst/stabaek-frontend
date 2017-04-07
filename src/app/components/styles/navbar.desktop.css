@@ -18,6 +18,7 @@
   font-size: 20px;
   line-height: 1;
   color: black;
+  cursor: pointer;
 }
 
 .navbar-desktop .navbar-brand,
@@ -35,7 +36,12 @@
   color: black;
 }
 
-.navbar-desktop .navbar-nav .nav-link:focus, .navbar-inverse .navbar-nav .nav-link:hover {
+.navbar-desktop .navbar-nav .nav-link:focus,
+.navbar-inverse .navbar-nav .nav-link:hover,
+.navbar-inverse .navbar-nav .navbar-link-desktop:focus,
+.navbar-inverse .navbar-nav .navbar-link-desktop:hover,
+.navbar-inverse .navbar-nav .navbar-next-fixture:focus
+.navbar-inverse .navbar-nav .navbar-next-fixture:hover {
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -45,4 +51,46 @@
 .navbar-desktop .navbar-nav .nav-link.active {
   color: black;
   font-weight: bold;
+}
+
+.navbar-next-fixture{
+  padding: 2rem;
+}
+.navbar-next-feature-image{
+  padding: 0 0 1rem 0;
+  height: 6rem;
+  width: auto;
+}
+
+#clockdiv{
+  padding: 0 0 0 0;
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 22px;
+}
+
+.div-home-away{
+  display: inline;
+}
+
+#clockdiv > div{
+  padding: 1rem;
+  border-radius: 3px;
+  background: #2D3657;
+  display: inline-block;
+}
+
+#clockdiv div > span{
+  /*padding: 1rem;*/
+  border-radius: 3px;
+  background:  #2D3657;
+  display: inline-block;
+}
+
+.smalltext{
+  padding-top: 3px;
+  font-size: 16px;
 }

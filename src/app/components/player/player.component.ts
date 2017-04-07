@@ -21,7 +21,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private sub: any;
   private _player : Player = null;
   private team: Observable<Team> = null;
-  private playerStatistics: PlayerStatistic[] = null;
+  // private playerStatistics: PlayerStatistic[] = null;
   private id: any;
   private isLoading : boolean = true;
 
@@ -53,10 +53,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   set player(value: Player) {
     this._player = value;
     if(value == null) return;
-    this.appRestService.getPlayerStatisticsByPlayer(value.id).subscribe(
-      playerStatistics => this.playerStatistics = playerStatistics,
-      error => this.errorMessage = error
-    );
+    // this.appRestService.getPlayerStatisticsByPlayer(value.id).subscribe(
+    //   playerStatistics => this.playerStatistics = playerStatistics,
+    //   error => this.errorMessage = error
+    // );
     this.team = this.appRestService.getTeam(value.teamIdString);
   }
 

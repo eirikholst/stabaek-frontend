@@ -68,19 +68,6 @@ export class AppRestService {
       .catch(this.handleError);
   }
 
-  getPlayerStatisticsByPlayer(id: any): Observable<PlayerStatistic[]> {
-    return this.http.get(this.restUrl + 'playerStatistics/byPlayer=' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  getPlayerStatisticsByStage(id: any): Observable<PlayerStatistic[]> {
-    return this.http.get(this.restUrl + 'playerStatistics/byStage=' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-
   private extractData(res: Response) {
     let body = res.json();
     return body || {};
@@ -97,5 +84,11 @@ export class AppRestService {
     }
     console.error(errMsg);
     return Promise.reject(errMsg);
+  }
+
+  getPlayerStatisticsByStage(stageId: String) {
+    return this.http.get(this.restUrl + 'playerStatistics?stageId=' + stageId)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 }

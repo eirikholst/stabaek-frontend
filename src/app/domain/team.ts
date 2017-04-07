@@ -1,6 +1,8 @@
 import {Stadium} from "./stadium";
 import {Fixture} from "./fixture";
 import {Player} from "./player";
+import {Transfer} from "./transfer";
+import {PlayerStatistic} from "./playerStatistic";
 
 export class Team {
 
@@ -12,5 +14,6 @@ export class Team {
   'awayFixtures': Fixture[];
   'players': Player[];
   'teamLogoUrl': String;
-
+  'tramsfers': Transfer[];
+  'playerStatistics': PlayerStatistic[];
 }

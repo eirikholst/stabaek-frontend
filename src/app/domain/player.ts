@@ -1,4 +1,6 @@
 import {Team} from "./team";
+import {PlayerStatistic} from "./playerStatistic";
+import {Transfer} from "./transfer";
 
 export class Player{
 
@@ -10,4 +12,6 @@ export class Player{
   'number': number;
   'profilePictureUrl': string;
   'teamIdString': string;
+  'playerStatistics': PlayerStatistic[];
+  'tranfers': Transfer[];
 }

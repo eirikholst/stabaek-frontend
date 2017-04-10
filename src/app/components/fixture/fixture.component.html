@@ -7,12 +7,11 @@
 <!--</section>-->
 
 
-<section *ngIf="fixture">
-
+<section *ngIf="fixture" class="max-width-400">
 
   <div class="wrap">
 
-    <img src="{{stadiumImageUrl}}" class="stadium-image">
+    <img src="{{stadiumImageUrl}}" class="stadium-image width-400">
 
     <div class="content">
       <h1 style="color: #eeeeee; margin: 0">
@@ -38,18 +37,129 @@
     <li class="tabs__item">
       <a class="tabs__link" (click)="showAwayTeamInfo()">{{fixture.awayTeamNameString}}spillere</a>
     </li>
+    <li class="tabs__item">
+      <a class="tabs__link" (click)="showHeadToHead()">Head2Head</a>
+    </li>
   </ul>
 
   <script>
     document.getElementById("defaultOpen").click();
   </script>
 
-  <div class="container-centered">
+  <div *ngIf="isShowingTeamPlayerList">
+    <div class="container-centered">
       <team-player-list [team]="teamSubjectToInfoExtraction | async"></team-player-list>
+    </div>
+  </div>
+
+  <div *ngIf="isShowingHeadToHeadInfo">
+    <section *ngIf="headToHead">
+      <div class="container-centered">
+        <ul class="list-group list-group-transparent">
+          <li class="list-group-item list-item-transparent"
+              *ngFor="let team of headToHead.teams | addTotalHeadToHeadValues; let i = index">
+            <section *ngIf="i == 0">
+              <div class="list-group">
+                <div class="row list-group-item black">
+                  <h4 class="black">
+                    Home team total
+                  </h4>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Win: {{team.wonTotal}}
+                    </div>
+                    <div class="column">
+                      Draw: {{team.drawnTotal}}
+                    </div>
+                    <div class="column">
+                      Lost: {{team.lostTotal}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals Scored: {{team.goalsForTotal}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals conceived: {{team.goalsAgainstTotal}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group">
+                <div class="row list-group-item black">
+                  <h4 class="black">
+                    Home team at home
+                  </h4>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Win: {{team.wonHome}}
+                    </div>
+                    <div class="column">
+                      Draw: {{team.drawnHome}}
+                    </div>
+                    <div class="column">
+                      Lost: {{team.lostHome}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals Scored: {{team.goalsForHome}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals conceived: {{team.goalsAgainstHome}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group">
+                <div class="row list-group-item black">
+                  <h4 class="black">
+                    Home team away
+                  </h4>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Win: {{team.wonAway}}
+                    </div>
+                    <div class="column">
+                      Draw: {{team.drawnAway}}
+                    </div>
+                    <div class="column">
+                      Lost: {{team.lostAway}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals Scored: {{team.goalsForAway}}
+                    </div>
+                  </div>
+                  <div class="container-avatar vertical-divider">
+                    <div class="column">
+                      Goals conceived: {{team.goalsAgainstAway}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </li>
+        </ul>
+      </div>
+      <div class="container-centered">
+        <ul class="list-group list-group-transparent">
+          <li class="list-group-item list-item-transparent"
+              *ngFor="let fixture of headToHead.previousFixtures | orderByDateDescending | addReadableDateToFixture">
+            <div class="list-group">
+              <div class="row list-group-item black">
+                <span class="pull-left black">{{fixture.homeTeamNameString}} - {{fixture.awayTeamNameString}}: {{fixture.homeScore}}-{{fixture.awayScore}}</span>
+                <span class="pull-right black">{{fixture.readableDate}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </section>
-
-
-<!--<section *ngIf="errorMessage">-->
-<!--<h1 style="color: #eeeeee">ERROR: {{errorMessage}}</h1>-->
-<!--</section>-->

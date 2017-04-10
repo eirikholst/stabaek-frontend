@@ -10,7 +10,7 @@ import {AppRestService} from "../../service/app.rest.service";
   <div class="col-sm-4">
     <ul class="list-group list-group-transparent">
       <li class="list-group-item list-item-transparent"
-          *ngFor="let player of players | async">
+          *ngFor="let player of players | async | orderByShirtNumber">
         <div class="list-group">
           <player-list-element [player]="player" [infoString]="player.position"></player-list-element>
         </div>

@@ -7,9 +7,10 @@ import {TeamComponent} from "./components/team/team.component";
 import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOverview.component";
 import {PlayerComponent} from "./components/player/player.component";
 import {StatsComponent} from "./components/stats/stats.component";
+import {Home} from "./components/home/home.component";
 
 export const ROUTES = [
-  {path: '', component: FixtureOverviewComponent},
+  {path: '', component: Home},
   {path: 'fixtures', component: FixtureOverviewComponent, children:[
     {path: 'fixtureList', component: FixtureListComponent, outlet: 'fixtureListOutlet'},
     {path: ':id', component: FixtureComponent, outlet: 'fixtureInfoOutlet'}

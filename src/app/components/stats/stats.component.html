@@ -19,7 +19,7 @@
           *ngFor="let playerStatistic of playerStatistics | orderByStatisticType:statisticType">
         <div class="list-group">
           <a class="row list-group-item black pointer" [routerLink]="['/players', playerStatistic.playerId]">
-            <span class="pull-left black">{{getPlayerName(playerStatistic)}} ({{playerStatistic.teamName}})</span>
+            <span class="pull-left black">{{playerStatistic.playerName}} ({{playerStatistic.teamName}})</span>
             <span class="pull-right black">{{getInfoString(playerStatistic)}}</span>
           </a>
         </div>

@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Fixture} from "../../domain/fixture";
 import {Observable} from "rxjs";
 import {Team} from "../../domain/team";
-import {Player} from "../../domain/player";
+import {HeadToHead} from "../../domain/headToHead";
 
 @Component({
   selector: 'fixtures',
@@ -24,7 +24,9 @@ export class FixtureComponent implements OnInit, OnDestroy {
   private id: any;
   private isLoading: boolean = true;
   private teamSubjectToInfoExtraction : Observable<Team>;
-
+  private isShowingTeamPlayerList: boolean = true;
+  private isShowingHeadToHeadInfo: boolean = false;
+  private headToHead: HeadToHead = null;
 
   constructor(private appRestService: AppRestService,
               public route: ActivatedRoute) {
@@ -58,9 +60,18 @@ export class FixtureComponent implements OnInit, OnDestroy {
   }
 
   showTeamInfo(id){
+    this.isShowingTeamPlayerList = true;
+    this.isShowingHeadToHeadInfo = false;
     this.teamSubjectToInfoExtraction = this.appRestService.getTeam(id);
   }
 
+  showHeadToHead(){
+    if(this.headToHead == null)
+      this.appRestService.getHeadToHead(this.fixture.id).subscribe(
+        headToHead => this.headToHead = headToHead);
+    this.isShowingHeadToHeadInfo = true;
+    this.isShowingTeamPlayerList = false;
+  }
 
   get fixture(): Fixture {
     return this._fixture;

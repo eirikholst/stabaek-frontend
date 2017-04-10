@@ -28,20 +28,12 @@ export class StatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appRestService.getPlayerStatisticsByStage(this.stageId)
+    this.appRestService.getPlayerStatisticsByStage(this.stageId, true)
       .subscribe(
         playerStatistic => this.playerStatistics = playerStatistic,
         error => this.errorMessage = <any>error);
   }
 
-
-  getPlayerName(playerStatistic: PlayerStatistic) {
-    let playerName = "";
-    this.appRestService.getPlayer(playerStatistic.playerId).subscribe(
-      player => playerName = player.firstName.concat(" ", player.lastName)
-    );
-    return playerName;
-  }
 
   getInfoString(playerStatistic: PlayerStatistic) {
     switch (this.statisticType) {

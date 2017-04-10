@@ -11,7 +11,7 @@ import { ROUTES } from "./app.routes";
 import { FixtureListComponent } from './components/fixtureList/fixtureList.component';
 import { AllTeamsComponent } from './components/teamList/teamList.component';
 import { NavbarComponent } from './components/navbar/nav.navbar';
-import {OrderByDate} from "./components/pipes/orderByDate";
+import {OrderByDate, OrderByDateDescending} from "./components/pipes/orderByDate";
 import {AddRotationToFixture} from "./components/pipes/addRotationToFixture";
 import {TestComponent} from "./components/test/test.component";
 import {FixtureComponent} from "./components/fixture/fixture.component";
@@ -23,10 +23,14 @@ import {StatsComponent} from "./components/stats/stats.component";
 import {PlayerListElement} from "./components/player/player.listcomponent";
 import {TeamPlayerList} from "./components/team/team.playerscomponent";
 import {OrderByStatisticType} from "./components/pipes/orderByStatisticType";
+import {OrderByShirtNumber} from "./components/pipes/orderByShirtNumber";
+import {Home} from "./components/home/home.component";
+import {AddTotalHeadToHeadValues} from "./components/pipes/addTotalHeadToHeadValues";
 
 @NgModule({
   declarations: [
     AppComponent,
+    Home,
     NavbarComponent,
     FixtureListComponent,
     FixtureComponent,
@@ -38,9 +42,12 @@ import {OrderByStatisticType} from "./components/pipes/orderByStatisticType";
     TeamPlayerList,
     StatsComponent,
     OrderByDate,
+    OrderByDateDescending,
+    OrderByShirtNumber,
     OrderByStatisticType,
     AddRotationToFixture,
     AddReadableDateToFixture,
+    AddTotalHeadToHeadValues,
     TestComponent,
   ],
   imports: [

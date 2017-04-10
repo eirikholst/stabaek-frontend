@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {PlayerStatistic} from "../../domain/playerStatistic";
 import {Team} from "../../domain/team";
 import {Observable} from "rxjs";
+import {PlayerInfoType} from "./playerInfoType";
 
 @Component({
   selector: 'player',
@@ -21,9 +22,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private sub: any;
   private _player : Player = null;
   private team: Observable<Team> = null;
-  // private playerStatistics: PlayerStatistic[] = null;
   private id: any;
-  private isLoading : boolean = true;
+  private isLoading: boolean = true;
+  private isShowingStatistics: boolean = true;
+  private isShowingTransfers: boolean = false;
 
   constructor(private appRestService: AppRestService,
               public route: ActivatedRoute){
@@ -53,11 +55,19 @@ export class PlayerComponent implements OnInit, OnDestroy {
   set player(value: Player) {
     this._player = value;
     if(value == null) return;
-    // this.appRestService.getPlayerStatisticsByPlayer(value.id).subscribe(
-    //   playerStatistics => this.playerStatistics = playerStatistics,
-    //   error => this.errorMessage = error
-    // );
     this.team = this.appRestService.getTeam(value.teamIdString);
   }
 
+  showStatistics(): void{
+    this.setDisplayInfo(PlayerInfoType.Statistics);
+  }
+
+  showTransfers(): void{
+    this.setDisplayInfo(PlayerInfoType.Transfers);
+  }
+
+  private setDisplayInfo(playerInfoType: PlayerInfoType) {
+    this.isShowingStatistics = playerInfoType == PlayerInfoType.Statistics;
+    this.isShowingTransfers = playerInfoType == PlayerInfoType.Transfers;
+  }
 }

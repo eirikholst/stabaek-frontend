@@ -1,15 +1,15 @@
 
 import {Player} from "./player";
 export class PlayerStatistic {
-  'id': String;
-  'stageName': String;
-  'stageId': String;
-  'teamName': String;
-  'teamId': String;
+  'id': string;
+  'stageName': string;
+  'stageId': string;
+  'teamName': string;
+  'teamId': string;
   'goals': number;
   'assists': number;
   'redCards': number;
   'yellowCards': number;
-  'playerId': String;
-  'player': Player;
+  'playerId': string;
+  'playerName': string;
 }

@@ -4,6 +4,7 @@ import {Fixture} from '../../domain/fixture';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FixtureUtils} from "../utils/FixtureUtils";
 import {OrderByDate} from "../pipes/orderByDate";
+import {ScreenUtils} from "../utils/ScreenUtils";
 
 @Component({
   selector: 'fixtures',
@@ -21,14 +22,13 @@ export class FixtureListComponent implements OnInit {
   private isShowingAllMatches: boolean = false;
   private fixtureUtils: FixtureUtils;
 
-  constructor(
-    private appRestService: AppRestService,
-    public route: ActivatedRoute,
-    private router: Router){
+  constructor(private appRestService: AppRestService,
+              public route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-      this.fixtureUtils = new FixtureUtils();
+    this.fixtureUtils = new FixtureUtils();
     this.appRestService.getAllStabaekFixtures()
       .subscribe(
         fixtures => this.fixtures = fixtures,
@@ -36,17 +36,20 @@ export class FixtureListComponent implements OnInit {
   }
 
   showFixtureInfo(id) {
+    if (ScreenUtils.isOnMobile())
+      this.router.navigate(['/mobileFixtures', id]);
+    else
       this.router.navigate(['/fixtures', {outlets: {'fixtureInfoOutlet': [id]}}]);
   }
 
-  showStabaekMatches(){
+  showStabaekMatches() {
     this.appRestService.getAllStabaekFixtures()
       .subscribe(
         fixtures => this._fixtures = fixtures,
         error => this.errorMessage = <any>error);
   }
 
-  showAllMatches(){
+  showAllMatches() {
     this.appRestService.getAllFixtures()
       .subscribe(
         fixtures => this._fixtures = fixtures,
@@ -59,7 +62,7 @@ export class FixtureListComponent implements OnInit {
 
   set fixtures(value: Fixture[]) {
     this._fixtures = value;
-    if(value == null) return;
+    if (value == null) return;
     this.showFixtureInfo(this.fixtureUtils.getNextFixture(value).id);
   }
 }

@@ -6,58 +6,81 @@
   Loading our hyperdrives!!! Retrieving data...
 </section>
 
-<section *ngIf="player && playerStatistics">
+<section *ngIf="player" class="max-width-400">
 
-  <div class="container-avatar container-centered vertical-divider">
-    <div class="column">
-      <img src="{{player.profilePictureUrl}}" class="player-avatar">
-    </div>
-    <div class="column">
-      <img src="{{(team | async)?.teamLogoUrl}}" class="player-avatar">
-    </div>
-  </div>
+  <div class="wrap min-height-300">
 
-  <div class="container-centered">
-    <h1>
-      {{player.firstName}} {{player.lastName}}
-    </h1>
-  </div>
+    <img src="{{player.profilePictureUrl}}" class="player-image width-400">
 
-  <div class="container-avatar container-centered vertical-divider">
-    <div class="column">
-      {{player.number}}
-    </div>
-    <div class="column">
-      {{player.position}}
-    </div>
-    <div class="column">
-      {{player.teamName}}
-    </div>
-  </div>
+    <div class="content">
 
-  <div class="container-centered">
-    <ul class="list-group list-group-transparent">
-      <li class="list-group-item list-item-transparent"
-          *ngFor="let playerStatistic of player.playerStatistics">
-        <div class="list-group">
-          <div class="row list-group-item black">
-            <h4 class="black">
-              {{playerStatistic.stageName}}
-            </h4>
-            <p>Team: {{playerStatistic.teamName}}</p>
-            <p>Goals: {{playerStatistic.goals}}</p>
-            <p>Assists: {{playerStatistic.assists}}</p>
-            <p>Red Cards: {{playerStatistic.redCards}}</p>
-            <p>Yellow Cards: {{playerStatistic.yellowCards}}</p>
-          </div>
+      <div class="container-centered">
+        <h1>
+          {{player.firstName}} {{player.lastName}}
+        </h1>
+      </div>
+
+      <div class="container-avatar container-centered max-width-400 vertical-divider">
+        <div class="column">
+          {{player.number}}
         </div>
-      </li>
-    </ul>
+        <div class="column">
+          {{player.position}}
+        </div>
+        <div class="column">
+          {{player.teamName}}
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-</section>
+  <ul class="tabs secondary-nav">
+    <li class="tabs__item">
+      <a class="tabs__link" (click)="showStatistics()" id="defaultOpen">Statistics</a>
+    </li>
+    <li class="tabs__item">
+      <a class="tabs__link" (click)="showTransfers()">Transfers</a>
+    </li>
+  </ul>
 
+  <div *ngIf="isShowingStatistics">
+    <div class="container-centered">
+      <ul class="list-group list-group-transparent">
+        <li class="list-group-item list-item-transparent"
+            *ngFor="let playerStatistic of player.playerStatistics">
+          <div class="list-group">
+            <div class="row list-group-item black">
+              <h4 class="black">
+                {{playerStatistic.stageName}}
+              </h4>
+              <p>Team: {{playerStatistic.teamName}}</p>
+              <p>Goals: {{playerStatistic.goals}}</p>
+              <p>Assists: {{playerStatistic.assists}}</p>
+              <p>Red Cards: {{playerStatistic.redCards}}</p>
+              <p>Yellow Cards: {{playerStatistic.yellowCards}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<section *ngIf="!player || !playerStatistics">
-  <h3 class="black">Could not find player statistics ...</h3>
+  <div *ngIf="isShowingTransfers">
+    <div class="container-centered">
+      <ul class="list-group list-group-transparent">
+        <li class="list-group-item list-item-transparent"
+            *ngFor="let transfer of player.transfers">
+          <div class="list-group">
+            <div class="row list-group-item black">
+              <span class="pull-left black">{{transfer.fromTeamName}} -> {{transfer.toTeamName}}</span>
+              <span class="pull-right black">{{transfer.date}}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </section>

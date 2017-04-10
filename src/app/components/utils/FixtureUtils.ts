@@ -1,5 +1,6 @@
 import {Fixture} from "../../domain/fixture";
 import {OrderByDate} from "../pipes/orderByDate";
+import {AppRestService} from "../../service/app.rest.service";
 
 export class FixtureUtils {
 

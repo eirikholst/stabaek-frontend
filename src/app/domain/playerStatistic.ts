@@ -1,4 +1,5 @@
 
+import {Player} from "./player";
 export class PlayerStatistic {
   'id': String;
   'stageName': String;
@@ -9,4 +10,6 @@ export class PlayerStatistic {
   'assists': number;
   'redCards': number;
   'yellowCards': number;
+  'playerId': String;
+  'player': Player;
 }

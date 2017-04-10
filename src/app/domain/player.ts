@@ -2,12 +2,12 @@ import {Team} from "./team";
 
 export class Player{
 
-  'id': String;
-  'firstName': String;
-  'lastName': String;
-  'position': String;
+  'id': string;
+  'firstName': string;
+  'lastName': string;
+  'position': string;
   'team': Team;
   'number': number;
-  'profilePictureUrl': String;
-  'teamIdString': String;
+  'profilePictureUrl': string;
+  'teamIdString': string;
 }

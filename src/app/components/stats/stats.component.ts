@@ -15,14 +15,13 @@ import {StatisticType} from "./statisticType";
 })
 
 
-
 export class StatsComponent implements OnInit {
 
 
   private stageId: String = "673879";
   private errorMessage: any;
   private playerStatistics: PlayerStatistic[];
-  private statisticType : StatisticType = StatisticType.Goals;
+  private statisticType: StatisticType = StatisticType.Goals;
 
   constructor(private appRestService: AppRestService,
               private route: ActivatedRoute) {
@@ -35,8 +34,17 @@ export class StatsComponent implements OnInit {
         error => this.errorMessage = <any>error);
   }
 
-  getInfoString(playerStatistic: PlayerStatistic){
-    switch(this.statisticType){
+
+  getPlayerName(playerStatistic: PlayerStatistic) {
+    let playerName = "";
+    this.appRestService.getPlayer(playerStatistic.playerId).subscribe(
+      player => playerName = player.firstName.concat(" ", player.lastName)
+    );
+    return playerName;
+  }
+
+  getInfoString(playerStatistic: PlayerStatistic) {
+    switch (this.statisticType) {
       case StatisticType.Goals:
         return playerStatistic.goals;
       case StatisticType.Assists:

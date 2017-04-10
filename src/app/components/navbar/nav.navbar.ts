@@ -10,8 +10,7 @@ import {FixtureUtils} from "../utils/FixtureUtils";
   templateUrl: 'nav.navbar.html',
   styleUrls: [
     '../styles/app.component.css',
-    '../styles/navbar.desktop.css',
-    '../styles/navbar.mobile.css',
+    '../styles/navbar.css'
   ],
   providers:[OrderByDate]
 })

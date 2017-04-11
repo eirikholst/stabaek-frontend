@@ -9,6 +9,10 @@ html, body, .container {
   margin: auto;
 }
 
+.white {
+  color: #eeeeee;
+}
+
 .container-left {
   display: flex;
   float: left;

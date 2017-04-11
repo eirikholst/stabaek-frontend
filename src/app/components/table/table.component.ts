@@ -34,6 +34,9 @@ import {AddFormArrayToTeamInTable} from "../pipes/addFormArrayToTeamInTable";
           {{value}}
          </div>
       </ng-template>
+      <ng-template #teamNameTemplate let-row="row" let-value="value" let-i="index">
+          <a class="white" [routerLink]="['/teams', row.id]">{{value}}</a>
+      </ng-template>      
     </div>
   `
 })
@@ -41,6 +44,7 @@ export class TableComponent implements OnInit {
 
   @ViewChild('formTemplate') public formTemplate: TemplateRef<any>;
   @ViewChild('numberTemplate') public numberTemplate: TemplateRef<any>;
+  @ViewChild('teamNameTemplate') public teamNameTemplate: TemplateRef<any>;
 
   private _rows: TeamInTable[];
   columns = this.getColumns();
@@ -65,24 +69,10 @@ export class TableComponent implements OnInit {
       teams => this.rows = this.addFormArrayPipe.transform(teams, null));
   }
 
-  // private getAllColumns() {
-  //   return [
-  //     {name: 'Name', prop:'name', width: '150'},
-  //     {name: 'Played', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'Won', width: '100, cellTemplate: this.numberTemplate'},
-  //     {name: 'Drawn', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'Lost', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'GF', prop:'goalsScored', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'GA', prop:'goalsConceded', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'GD', prop:'goalDifference', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'Points', width: '100', cellTemplate: this.numberTemplate},
-  //     {name: 'Form', prop:'formArray', width: '150', cellTemplate: this.formTemplate},
-  //   ];
-  // }
-
   private getAllColumns() {
     return [
-      {name: 'Name', prop:'name', width: '150'},
+      {name: '#', prop:'place', width: '40'},
+      {name: 'Name', prop:'name', width: '150', cellTemplate: this.teamNameTemplate},
       {name: 'Played', width: '100'},
       {name: 'Won', width: '100'},
       {name: 'Drawn', width: '100'},
@@ -98,7 +88,7 @@ export class TableComponent implements OnInit {
 
   private getMobileColumns() {
     return [
-      {name: 'Name', width: '120'},
+      {name: 'Name', width: '120', cellTemplate: this.teamNameTemplate},
       {name: 'P', prop:'played', width: '40'},
       {name: 'Pts', prop:'points', width: '40'},
       {name: 'Form', prop:'formArray', width: '120', cellTemplate: this.formTemplate},

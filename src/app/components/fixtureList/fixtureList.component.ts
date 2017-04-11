@@ -17,10 +17,9 @@ import {ScreenUtils} from "../utils/ScreenUtils";
 
 export class FixtureListComponent implements OnInit {
 
-  private _fixtures: Fixture[];
+  private fixtures: Fixture[];
   private errorMessage: any;
-  private isShowingAllMatches: boolean = false;
-  private fixtureUtils: FixtureUtils;
+    private fixtureUtils: FixtureUtils;
 
   constructor(private appRestService: AppRestService,
               public route: ActivatedRoute,
@@ -45,24 +44,14 @@ export class FixtureListComponent implements OnInit {
   showStabaekMatches() {
     this.appRestService.getAllStabaekFixtures()
       .subscribe(
-        fixtures => this._fixtures = fixtures,
+        fixtures => this.fixtures = fixtures,
         error => this.errorMessage = <any>error);
   }
 
   showAllMatches() {
     this.appRestService.getAllFixtures()
       .subscribe(
-        fixtures => this._fixtures = fixtures,
+        fixtures => this.fixtures = fixtures,
         error => this.errorMessage = <any>error);
-  }
-
-  get fixtures(): Fixture[] {
-    return this._fixtures;
-  }
-
-  set fixtures(value: Fixture[]) {
-    this._fixtures = value;
-    if (value == null) return;
-    this.showFixtureInfo(this.fixtureUtils.getNextFixture(value).id);
   }
 }

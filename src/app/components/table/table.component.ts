@@ -1,56 +1,117 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import any = jasmine.any;
 import {TeamInTable} from "../../domain/teamInTable";
 import {Router, ActivatedRoute} from "@angular/router";
 import {AppRestService} from "../../service/app.rest.service";
-import {Observable} from "rxjs";
+import {ScreenUtils} from "../utils/ScreenUtils";
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {AddFormArrayToTeamInTable} from "../pipes/addFormArrayToTeamInTable";
 
 
 @Component({
   selector: 'table',
   styleUrls: [
+    '../styles/app.component.css',
     '../styles/styles.scss',
+    '../styles/table.css',
   ],
   template: `
       <div>
-      <ngx-datatable
-        [rows]="rows"
-        [columns]="columns">
-      </ngx-datatable>
+        <ngx-datatable class="stabaek"
+          [rows]="rows"
+          [columns]="columns"
+          [columnMode]="'standard'">
+        </ngx-datatable>
+      <ng-template #formTemplate let-row="row" let-value="value" let-i="index">        
+        <div class="inline" *ngFor="let formValue of row.formArray">
+            <a *ngIf="formValue == 1" class="formbox w">W</a>
+            <a *ngIf="formValue == 2" class="formbox l">L</a>
+            <a *ngIf="formValue == 3" class="formbox d">D</a>
+        </div>
+      </ng-template>
+      <ng-template #numberTemplate let-row="row" let-value="value" let-i="index">
+        <div class="container-centered">
+          {{value}}
+         </div>
+      </ng-template>
     </div>
   `
 })
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit {
+
+  @ViewChild('formTemplate') public formTemplate: TemplateRef<any>;
+  @ViewChild('numberTemplate') public numberTemplate: TemplateRef<any>;
+
+  private _rows: TeamInTable[];
+  columns = this.getColumns();
+
+  private addFormArrayPipe : AddFormArrayToTeamInTable;
 
   constructor(private appRestService: AppRestService,
               public route: ActivatedRoute,
-              private router: Router) {}
+              private router: Router) {
+    this.addFormArrayPipe = new AddFormArrayToTeamInTable();
+  }
 
-  // private rows : TeamInTable[] = [
-  //     { id: '4', name: 'Stabæk', place: 5, played: 3, won: 2, drawn: 0, lost: 1, goalsScored: 6, goalsConceded: 5, goalDifference: 1, points: 6, form: '1,2,1' },
-  //     { id: '4', name: 'Sarpsborg 08', place: 1, played: 3, won: 3, drawn: 0, lost: 0, goalsScored: 9, goalsConceded: 2, goalDifference: 7, points: 9, form: '1,1,1' }
-  //   ];
 
-  private rows: TeamInTable[];
-
-  // private rows : TeamInTable[] = null;
-
-  columns = [
-    { name: 'Name' },
-    { name: 'Played' },
-    { name: 'Won' },
-    { name: 'Drawn' },
-    { name: 'Lost' },
-    { name: 'GoalsScored' },
-    { name: 'GoalsConceded' },
-    { name: 'GoalDifference' },
-    { name: 'Points' },
-    { name: 'Form' }
-  ];
+  private getColumns() {
+    if (ScreenUtils.isOnMobile())
+      return this.getMobileColumns();
+    return this.getAllColumns();
+  }
 
   ngOnInit(): void {
     this.appRestService.getTableRows().subscribe(
-      teams => this.rows = teams);
+      teams => this.rows = this.addFormArrayPipe.transform(teams, null));
+  }
+
+  // private getAllColumns() {
+  //   return [
+  //     {name: 'Name', prop:'name', width: '150'},
+  //     {name: 'Played', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'Won', width: '100, cellTemplate: this.numberTemplate'},
+  //     {name: 'Drawn', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'Lost', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'GF', prop:'goalsScored', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'GA', prop:'goalsConceded', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'GD', prop:'goalDifference', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'Points', width: '100', cellTemplate: this.numberTemplate},
+  //     {name: 'Form', prop:'formArray', width: '150', cellTemplate: this.formTemplate},
+  //   ];
+  // }
+
+  private getAllColumns() {
+    return [
+      {name: 'Name', prop:'name', width: '150'},
+      {name: 'Played', width: '100'},
+      {name: 'Won', width: '100'},
+      {name: 'Drawn', width: '100'},
+      {name: 'Lost', width: '100'},
+      {name: 'GF', prop:'goalsScored', width: '100'},
+      {name: 'GA', prop:'goalsConceded', width: '100'},
+      {name: 'GD', prop:'goalDifference', width: '100'},
+      {name: 'Points', width: '100'},
+      {name: 'Form', prop:'formArray', width: '150', cellTemplate: this.formTemplate},
+    ];
+  }
+
+
+  private getMobileColumns() {
+    return [
+      {name: 'Name', width: '120'},
+      {name: 'P', prop:'played', width: '40'},
+      {name: 'Pts', prop:'points', width: '40'},
+      {name: 'Form', prop:'formArray', width: '120', cellTemplate: this.formTemplate},
+    ];
+  }
+
+  get rows(): TeamInTable[] {
+    return this._rows;
+  }
+
+  set rows(value: TeamInTable[]) {
+    this._rows = value;
+    this.columns = this.getColumns();
   }
 
 }

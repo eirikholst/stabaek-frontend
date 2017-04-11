@@ -1,0 +1,31 @@
+.ngx-datatable.stabaek {
+  background: transparent;
+}
+
+.formbox {
+  display: inline-block;
+  width: 1.5em!important;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.formbox {
+  /*margin-right: .1667em;*/
+  margin-right: .1em;
+  color: #fff!important;
+  border-radius: 4px;
+}
+
+
+.formbox.w {
+  background-color: #6cc72a;
+}
+
+.formbox.d {
+  background-color: #b8b8b8;
+}
+
+ .formbox.l {
+   background-color: #ff5b00;
+ }

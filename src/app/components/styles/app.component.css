@@ -19,6 +19,10 @@ html, body, .container {
   display: block;
 }
 
+.inline{
+  display: inline;
+}
+
 .list-item-transparent {
   min-width: 300px;
   width: 100%;

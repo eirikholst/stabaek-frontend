@@ -28,6 +28,7 @@ import {Home} from "./components/home/home.component";
 import {AddTotalHeadToHeadValues} from "./components/pipes/addTotalHeadToHeadValues";
 import {TableComponent} from "./components/table/table.component";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {AddFormArrayToTeamInTable} from "./components/pipes/addFormArrayToTeamInTable";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AddRotationToFixture,
     AddReadableDateToFixture,
     AddTotalHeadToHeadValues,
+    AddFormArrayToTeamInTable,
     TestComponent,
   ],
   imports: [

@@ -10,5 +10,6 @@ export class TeamInTable{
   'goalsConceded': number;
   'goalDifference': number;
   'points': number;
+  'formArray': string[];
   'form': string;
 }

@@ -8,6 +8,7 @@ import {FixtureOverviewComponent} from "./components/fixtureOverview/fixtureOver
 import {PlayerComponent} from "./components/player/player.component";
 import {StatsComponent} from "./components/stats/stats.component";
 import {Home} from "./components/home/home.component";
+import {TableComponent} from "./components/table/table.component";
 
 export const ROUTES = [
   {path: '', component: Home},
@@ -20,7 +21,9 @@ export const ROUTES = [
   {path: 'mobileFixtures/:id', component: FixtureComponent},
   {path: 'teams/:id', component: TeamComponent},
   {path: 'players/:id', component: PlayerComponent},
-  {path: 'stats', component: StatsComponent}
+  {path: 'stats', component: StatsComponent},
+  {path: 'table', component: TableComponent},
+
 ];
 
 export const appRoutingProviders: any[] = [

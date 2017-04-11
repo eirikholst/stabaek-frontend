@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {isBlank} from "@angular/platform-browser-dynamic/src/facade/lang";
 import {Fixture} from "../../domain/fixture";
 
 @Pipe({
@@ -8,7 +7,7 @@ import {Fixture} from "../../domain/fixture";
 
 export class AddReadableDateToFixture implements PipeTransform{
   transform(array: Fixture[], args: any): Fixture[] {
-    if(isBlank(array)) return null;
+    if(array == null || array.length == 0) return null;
     for(let fixture of array){
       let date = new Date(fixture.date);
       fixture.readableDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();

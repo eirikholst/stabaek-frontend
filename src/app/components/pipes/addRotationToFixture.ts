@@ -1,14 +1,13 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
 import {Fixture} from '../../domain/fixture';
-import {isBlank} from "@angular/platform-browser-dynamic/src/facade/lang";
 
 @Pipe({
   name: "addRotationToFixture"
 })
 export class AddRotationToFixture implements PipeTransform {
   transform(array: Fixture[], args: any): Fixture[] {
-    if (isBlank(array)) return null;
+    if (array == null || array.length == 0) return null;
     var radius = 100;
     for(var i = 0; i < array.length; i++){
       var fixture = array[i];

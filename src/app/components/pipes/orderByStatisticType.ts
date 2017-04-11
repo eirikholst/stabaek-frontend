@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Fixture} from '../../domain/fixture';
-import {isBlank} from "@angular/platform-browser-dynamic/src/facade/lang";
 import {PlayerStatistic} from "../../domain/playerStatistic";
 import {StatisticType} from "../stats/statisticType";
 
@@ -9,7 +7,7 @@ import {StatisticType} from "../stats/statisticType";
 })
 export class OrderByStatisticType implements PipeTransform {
   transform(array: PlayerStatistic[], statisticType : StatisticType): PlayerStatistic[] {
-        if (isBlank(array)) return null;
+        if (array == null || array.length == 0) return null;
         switch (statisticType){
           case StatisticType.Goals:
             array.sort((a, b) => {

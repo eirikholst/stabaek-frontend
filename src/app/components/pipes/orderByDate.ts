@@ -1,13 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Fixture} from '../../domain/fixture';
-import {isBlank} from "@angular/platform-browser-dynamic/src/facade/lang";
 
 @Pipe({
   name: "orderByDate"
 })
 export class OrderByDate implements PipeTransform {
   transform(array: Fixture[], args: any): Fixture[] {
-    if (isBlank(array)) return null;
+    if(array == null || array.length == 0) return null;
     array.sort((a, b) => {
       if (a.date < b.date) {
         return -1;
@@ -25,7 +24,7 @@ export class OrderByDate implements PipeTransform {
 })
 export class OrderByDateDescending implements PipeTransform {
   transform(array: Fixture[], args: any): Fixture[] {
-    if (isBlank(array)) return null;
+    if (array == null || array.length == 0) return null;
     array.sort((a, b) => {
       if (a.date > b.date) {
         return -1;

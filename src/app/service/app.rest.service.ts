@@ -15,8 +15,8 @@ import {HeadToHead} from "../domain/headToHead";
 
 @Injectable()
 export class AppRestService {
-  private restUrl = 'http://localhost:8005/';  // URL to web api
-  // private restUrl = 'https://stabaek-backend.cfapps.io/';  // URL to web api
+  // private restUrl = 'http://localhost:8005/';  // URL to web api
+  private restUrl = 'https://stabaek-backend.cfapps.io/';  // URL to web api
 
   constructor(private http: Http) {
   }

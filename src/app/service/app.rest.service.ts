@@ -12,11 +12,13 @@ import {Player} from "../domain/player";
 import {PlayerStatistic} from "../domain/playerStatistic";
 import {Stadium} from "../domain/stadium";
 import {HeadToHead} from "../domain/headToHead";
+import {TeamInTable} from "../domain/teamInTable";
 
 @Injectable()
 export class AppRestService {
-  // private restUrl = 'http://localhost:8005/';  // URL to web api
-  private restUrl = 'https://stabaek-backend.cfapps.io/';  // URL to web api
+
+  private restUrl = 'http://localhost:8005/';  // URL to web api
+  // private restUrl = 'https://stabaek-backend.cfapps.io/';  // URL to web api
 
   constructor(private http: Http) {
   }
@@ -77,6 +79,12 @@ export class AppRestService {
 
   getHeadToHead(fixtureId: String): Observable<HeadToHead> {
     return this.http.get(this.restUrl + 'fixtures/' + fixtureId + "/headToHead")
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getTableRows(): Observable<TeamInTable[]> {
+    return this.http.get(this.restUrl + 'table/teams')
       .map(this.extractData)
       .catch(this.handleError);
   }

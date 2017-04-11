@@ -26,8 +26,8 @@ import {OrderByStatisticType} from "./components/pipes/orderByStatisticType";
 import {OrderByShirtNumber} from "./components/pipes/orderByShirtNumber";
 import {Home} from "./components/home/home.component";
 import {AddTotalHeadToHeadValues} from "./components/pipes/addTotalHeadToHeadValues";
-import {Ng2SmartTableModule} from "ng2-smart-table";
 import {TableComponent} from "./components/table/table.component";
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,7 @@ import {TableComponent} from "./components/table/table.component";
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    Ng2SmartTableModule
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+deploy:
+  provider: bluemixcloudfoundry
+  skip_cleanup: true
+  manifest: manifest.yml
+  username: eirik.holst@bouvet.no
+  password: 1DDf2556
+  organization: eirik.holst@bouvet.no
+  space: prod
+  on:
+    branch: master

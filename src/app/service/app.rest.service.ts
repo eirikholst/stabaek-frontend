@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 
@@ -8,85 +8,71 @@ import 'rxjs/add/operator/map';
 
 import {Team} from '../domain/team';
 import {Fixture} from '../domain/fixture';
-import {Player} from "../domain/player";
-import {PlayerStatistic} from "../domain/playerStatistic";
-import {Stadium} from "../domain/stadium";
-import {HeadToHead} from "../domain/headToHead";
-import {TeamInTable} from "../domain/teamInTable";
+import {Player} from '../domain/player';
+import {PlayerStatistic} from '../domain/playerStatistic';
+import {Stadium} from '../domain/stadium';
+import {HeadToHead} from '../domain/headToHead';
+import {TeamInTable} from '../domain/teamInTable';
 
 @Injectable()
 export class AppRestService {
 
   // private restUrl = 'http://localhost:8005/';  // URL to web api
-  private restUrl = 'https://stabaek-backend.cfapps.io/';  // URL to web api
+  private restUrl = 'http://7thheaven.myqnapcloud.com:8888/';  // URL to web api
+  // private restUrl = 'http://10.0.3.2:8888/';  // URL to web api
+  // private restUrl = 'http://stabaek-backend:8888/';  // URL to web api
 
   constructor(private http: Http) {
   }
 
-  getAllTeams(): Observable<Team[]> {
-    return this.http.get(this.restUrl + 'teams')
+  getRequest(url): Observable<any> {
+    return this.http.get(url)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  getAllTeams(): Observable<Team[]> {
+    return this.getRequest(this.restUrl + 'teams')
   }
 
   getAllFixtures(): Observable<Fixture[]> {
-    return this.http.get(this.restUrl + 'fixtures')
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'fixtures')
   }
 
   getAllStabaekFixtures(): Observable<Fixture[]> {
-    return this.http.get(this.restUrl + 'fixtures/findByTeam=Stabæk')
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'fixtures/findByTeam=Stabæk')
   }
 
   getFixture(id: String): Observable<Fixture> {
-    return this.http.get(this.restUrl + 'fixtures/' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'fixtures/' + id);
   }
 
   getTeam(id: String): Observable<Team> {
-    return this.http.get(this.restUrl + 'teams/' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'teams/' + id);
   }
 
   getPlayers(teamId: String): Observable<Player[]> {
-    return this.http.get(this.restUrl + 'teams/' + teamId + "/players")
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'teams/' + teamId + '/players');
   }
 
   getStadium(id: String): Observable<Stadium> {
-    return this.http.get(this.restUrl + 'stadiums/' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'stadiums/' + id);
   }
 
   getPlayer(id: any): Observable<Player> {
-    return this.http.get(this.restUrl + 'players/' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'players/' + id);
   }
 
   getPlayerStatisticsByStage(stageId: String, omitZeros: boolean): Observable<PlayerStatistic[]> {
-    return this.http.get(this.restUrl + 'playerStatistics?stageId=' + stageId + "&hasValue=" + omitZeros)
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'playerStatistics?stageId=' + stageId + '&hasValue=' + omitZeros);
   }
 
   getHeadToHead(fixtureId: String): Observable<HeadToHead> {
-    return this.http.get(this.restUrl + 'fixtures/' + fixtureId + "/headToHead")
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'fixtures/' + fixtureId + '/headToHead');
   }
 
   getTableRows(): Observable<TeamInTable[]> {
-    return this.http.get(this.restUrl + 'table/teams')
-      .map(this.extractData)
-      .catch(this.handleError);
+    return this.getRequest(this.restUrl + 'table/teams');
   }
 
   private extractData(res: Response) {

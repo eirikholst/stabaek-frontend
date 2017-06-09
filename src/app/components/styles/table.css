@@ -2,6 +2,12 @@
   background: transparent;
 }
 
+/*.datatable-body-row {*/
+  /*background-color: red;*/
+  /*background: red;*/
+  /*color: #6cc72a;*/
+/*}*/
+
 .formbox {
   display: inline-block;
   width: 1.5em!important;
